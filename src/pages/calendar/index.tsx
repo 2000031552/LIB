@@ -1,5 +1,6 @@
 import { SetStateAction, useState } from "react";
-import FullCalendar, { formatDate } from "@fullcalendar/react";
+import FullCalendar from "@fullcalendar/react";
+import { formatDate } from "@fullcalendar/core";
 import Grid from "@mui/material/Unstable_Grid2";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -21,7 +22,7 @@ const Calendar = () => {
   const colors = tokens(theme.palette.mode);
   const [currentEvents, setCurrentEvents] = useState([]);
 
-  const handleDateClick = (selected: { view: { calendar: unknown; }; dateStr: unknown; startStr: unknown; endStr: unknown; allDay: unknown; }) => {
+  const handleDateClick = (selected: { view: { calendar: unknown }; dateStr: unknown; startStr: unknown; endStr: unknown; allDay: unknown }) => {
     const title = prompt("Please enter a new title for your event");
     const calendarApi = selected.view.calendar;
     calendarApi.unselect();
@@ -37,7 +38,7 @@ const Calendar = () => {
     }
   };
 
-  const handleEventClick = (selected: { event: { title: unknown; remove: () => void; }; }) => {
+  const handleEventClick = (selected: { event: { title: unknown; remove: () => void } }) => {
     if (
       window.confirm(
         `Are you sure you want to delete the event '${selected.event.title}'`

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Sidebar, MenuItem, useProSidebar } from "react-pro-sidebar";
+import { Menu, Sidebar, MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 import { tokens } from "../../../theme";
 import { useTheme, Box, Typography, IconButton } from "@mui/material";
@@ -10,7 +10,6 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import SwitchRightOutlinedIcon from "@mui/icons-material/SwitchRightOutlined";
@@ -34,10 +33,10 @@ const Item: React.FC<ItemProps> = ({ title, to, icon, selected, setSelected }) =
       active={selected === title}
       style={{ color: colors.grey[100] }}
       onClick={() => setSelected(title)}
-      icon={icon}
-      routerLink={<Link to={to} />}
+      component={() => <Link to={to}>{title}</Link>} // Correct usage of Link component
     >
-      <Typography>{title}</Typography>
+      {icon}
+      <Typography variant="inherit">{title}</Typography>
     </MenuItem>
   );
 };
@@ -47,11 +46,11 @@ const MyProSidebar: React.FC = () => {
   const colors = tokens(theme.palette.mode);
   const [selected, setSelected] = useState<string>("Dashboard");
   const { sidebarRTL, setSidebarRTL, sidebarImage } = useSidebarContext();
-  const { collapseSidebar, toggleSidebar, collapsed, broken } = useProSidebar();
-  
- 
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
-  
+  const handleToggleSidebar = () => {
+    setIsSidebarCollapsed((prevCollapsed) => !prevCollapsed);
+  };
 
   return (
     <Box
@@ -90,20 +89,16 @@ const MyProSidebar: React.FC = () => {
         rtl={sidebarRTL}
         backgroundColor={colors.primary[400]}
         image={sidebarImage}
+        collapsed={isSidebarCollapsed} // Ensure isSidebarCollapsed is properly set
+        toggleSidebar={handleToggleSidebar} // Pass toggleSidebar function
       >
-        <Menu iconshape="square">
+        <Menu iconshape="square"> {/* Ensure proper usage of Menu props */}
           <MenuItem
             icon={
-              collapsed ? (
-                <MenuOutlinedIcon onClick={() => collapseSidebar()} />
-              ) : sidebarRTL ? (
-                <SwitchLeftOutlinedIcon
-                  onClick={() => setSidebarRTL(!sidebarRTL)}
-                />
+              sidebarRTL ? (
+                <SwitchLeftOutlinedIcon onClick={() => setSidebarRTL(!sidebarRTL)} />
               ) : (
-                <SwitchRightOutlinedIcon
-                  onClick={() => setSidebarRTL(!sidebarRTL)}
-                />
+                <SwitchRightOutlinedIcon onClick={() => setSidebarRTL(!sidebarRTL)} />
               )
             }
             style={{
@@ -111,58 +106,52 @@ const MyProSidebar: React.FC = () => {
               color: colors.grey[100],
             }}
           >
-            {!collapsed && (
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-                ml="15px"
-              >
-                <Typography variant="h3" color={colors.grey[100]}>
-                  ADMIN
-                </Typography>
-                <IconButton
-                  onClick={broken ? () => toggleSidebar() : () => collapseSidebar()}
-                >
-                  <CloseOutlinedIcon />
-                </IconButton>
-              </Box>
-            )}
-          </MenuItem>
-          {!collapsed && (
-            <Box mb="25px">
-              <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                sx={{
-                  "& .avater-image": {
-                    backgroundColor: colors.primary[500],
-                  },
-                }}
-              >
-                <img
-                  className="avater-image"
-                  alt="profile user"
-                  width="100px"
-                  height="100px"
-                  src={"../../assets/admin.png"}
-                  style={{ cursor: "pointer", borderRadius: "50%" }}
-                />
-              </Box>
-              <Box textAlign="center">
-                <Typography
-                  variant="h3"
-                  color={colors.grey[100]}
-                  fontWeight="bold"
-                  sx={{ m: "10px 0 0 0" }}
-                >
-                  Keerthi
-                </Typography>
-              </Box>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              ml="15px"
+            >
+              <Typography variant="h3" color={colors.grey[100]}>
+                ADMIN
+              </Typography>
+              <IconButton onClick={() => setSidebarRTL(!sidebarRTL)}>
+                <CloseOutlinedIcon />
+              </IconButton>
             </Box>
-          )}
-          <Box paddingLeft={collapsed ? undefined : "10%"}>
+          </MenuItem>
+          <Box mb="25px">
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              sx={{
+                "& .avatar-image": {
+                  backgroundColor: colors.primary[500],
+                },
+              }}
+            >
+              <img
+                className="avatar-image"
+                alt="profile user"
+                width="100px"
+                height="100px"
+                src={"../../assets/admin.png"}
+                style={{ cursor: "pointer", borderRadius: "50%" }}
+              />
+            </Box>
+            <Box textAlign="center">
+              <Typography
+                variant="h3"
+                color={colors.grey[100]}
+                fontWeight="bold"
+                sx={{ m: "10px 0 0 0" }}
+              >
+                Keerthi
+              </Typography>
+            </Box>
+          </Box>
+          <Box paddingLeft="10%">
             <Item
               title="Dashboard"
               to="/"
