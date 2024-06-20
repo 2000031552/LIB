@@ -62,6 +62,9 @@ const Invoices: React.FC = () => {
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,
           },
+          "& .MuiChackbox-root": {
+            color: `${colors.greenAccent[200]} !important`,
+          },
         }}
       >
         <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />

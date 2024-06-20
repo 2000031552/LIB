@@ -59,7 +59,7 @@ const Topbar = () => {
           p={0.2}         
           borderRadius={1}
         >
-          <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search" />
+          <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search Books" />
           <IconButton type="button">
             <SearchIcon />
           </IconButton>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Box, TextField, Button, Typography, useTheme } from "@mui/material";
 import { useMediaQuery } from "@mui/material";
- 
 
 const ChangePassword: React.FC = () => {
   const theme = useTheme();
@@ -18,10 +17,13 @@ const ChangePassword: React.FC = () => {
   };
 
   return (
-    <Box width={2} p={2} display="flex" flexDirection="column" justifyContent="center" alignItems="center"
-      sx={{
-        "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-      }}
+    <Box
+      width="100%"
+      p={2}
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
     >
       <Typography variant="h4" mb={2}>
         Change Password
@@ -33,7 +35,7 @@ const ChangePassword: React.FC = () => {
         onChange={handlePasswordChange}
         fullWidth
         margin="normal"
-        style={{ width: '400px' }}
+        style={{ maxWidth: '400px', width: '100%' }}
       />
       <TextField
         label="Confirm Password"
@@ -42,7 +44,7 @@ const ChangePassword: React.FC = () => {
         onChange={handlePasswordChange}
         fullWidth
         margin="normal"
-        style={{ width: '400px' }}
+        style={{ maxWidth: '400px', width: '100%' }}
       />
       <Button variant="contained" color="secondary" onClick={handleSubmit} sx={{ mt: 2 }}>
         Change Password
