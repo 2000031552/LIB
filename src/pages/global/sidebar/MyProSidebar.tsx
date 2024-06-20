@@ -33,7 +33,8 @@ const Item: React.FC<ItemProps> = ({ title, to, icon, selected, setSelected }) =
   return (
     <MenuItem
       active={selected === title}
-      style={{ color: selected === title ? colors.greenAccent[400] : colors.grey[100] }}
+      style={{ color: colors.greenAccent[500] }}
+      //style={{ color: selected === title ? colors.greenAccent[400] : colors.grey[100] }}
       onClick={() => setSelected(title)}
       icon={icon}
       component={<Link to={to} />}
