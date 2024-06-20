@@ -24,7 +24,11 @@ const validationSchema = Yup.object({
   userId: Yup.string()
     .email('Enter a valid email')
     .required('Email is required'),
-  password: Yup.string().required('Password is required'),
+  password: Yup.string().required('Password is required').min(8, 'Password must be 8 characters long')
+  .matches(/[0-9]/, 'Password requires a number')
+  .matches(/[a-z]/, 'Password requires a lowercase letter')
+  .matches(/[A-Z]/, 'Passwod requires a uppercase letter')
+  .matches(/[^\w]/, 'Password requires a symbol'),
 });
 
 const App: React.FC = () => {
@@ -32,11 +36,12 @@ const App: React.FC = () => {
 
   const formik = useFormik({
     initialValues: {
-      userId: '',
+      emailId: '',
       password: '',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+      console.log({ values });
       alert(JSON.stringify(values, null, 2));
     },
   });
@@ -52,7 +57,7 @@ const App: React.FC = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          marginTop: -2,
+          marginTop: 10,
         }}
       >
         <Paper
@@ -102,17 +107,18 @@ const App: React.FC = () => {
                 id="emailId"
                 name="emailId"
                 size="small"
+                type='email'
                 placeholder="Enter email"
-                value={formik.values.userId}
+                value={formik.values.emailId}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  (formik.touched.userId || formik.submitCount > 0) &&
-                  Boolean(formik.errors.userId)
+                  (formik.touched.emailId || formik.submitCount > 0) &&
+                  Boolean(formik.errors.emailId)
                 }
                 helperText={
-                  (formik.touched.userId || formik.submitCount > 0) &&
-                  formik.errors.userId
+                  (formik.touched.emailId || formik.submitCount > 0) &&
+                  formik.errors.emailId
                 }
                 margin="dense"
                 sx={{

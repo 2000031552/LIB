@@ -37,9 +37,10 @@ const Team: React.FC = () => {
           <Box
             width="100%"
             m="0 auto"
-            p="5px"
+            p="11px"
             display="flex"
             justifyContent="center"
+            //alignItems="center"
             bgcolor={
               access === "admin"
                 ? colors.greenAccent[600]
