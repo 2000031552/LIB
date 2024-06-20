@@ -24,7 +24,7 @@ const Invoices: React.FC = () => {
       headerName: "Fine Due",
       width: 150,
       renderCell: (params) => {
-        return <Typography color={colors.blueAccent[700]}>₹{params.row.cost}</Typography>;
+        return <Typography color={colors.greenAccent[400]}>₹{params.row.cost}</Typography>;
       },
     },
     { field: "date", headerName: "Expected Returndate", width: 150 },
