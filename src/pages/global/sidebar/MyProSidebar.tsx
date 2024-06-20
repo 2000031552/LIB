@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+// docs https://github.com/azouaoui-med/react-pro-sidebar
+import { useState } from "react";
 import { Menu, Sidebar, MenuItem } from "react-pro-sidebar";
 import { useProSidebar } from "react-pro-sidebar";
+
 import { useSidebarContext } from "./sidebarContext";
+
 import { Link } from "react-router-dom";
 import { tokens } from "../../../theme";
 import { useTheme, Box, Typography, IconButton } from "@mui/material";
@@ -10,47 +13,36 @@ import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SwitchRightOutlinedIcon from "@mui/icons-material/SwitchRightOutlined";
 import SwitchLeftOutlinedIcon from "@mui/icons-material/SwitchLeftOutlined";
-
-interface ItemProps {
-  title: string;
-  to: string;
-  icon: React.ReactNode;
-  selected: string;
-  setSelected: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const Item: React.FC<ItemProps> = ({ title, to, icon, selected, setSelected }) => {
+const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   return (
     <MenuItem
       active={selected === title}
-      style={{ color: colors.greenAccent[500] }}
-      //style={{ color: selected === title ? colors.greenAccent[400] : colors.grey[100] }}
+      style={{ color: colors.grey[100] }}
       onClick={() => setSelected(title)}
       icon={icon}
-      component={<Link to={to} />}
+      routerLink={<Link to={to} />}
     >
       <Typography>{title}</Typography>
     </MenuItem>
   );
 };
 
-const MyProSidebar: React.FC = () => {
+const MyProSidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [selected, setSelected] = useState<string>("Dashboard");
+  const [selected, setSelected] = useState("Dashboard");
   const { sidebarRTL, setSidebarRTL, sidebarImage } = useSidebarContext();
   const { collapseSidebar, toggleSidebar, collapsed, broken } = useProSidebar();
-
   return (
     <Box
       sx={{
@@ -67,6 +59,7 @@ const MyProSidebar: React.FC = () => {
           backgroundColor: "transparent !important",
         },
         "& .menu-item": {
+          // padding: "5px 35px 5px 20px !important",
           backgroundColor: "transparent !important",
         },
         "& .menu-anchor": {
@@ -89,15 +82,19 @@ const MyProSidebar: React.FC = () => {
         backgroundColor={colors.primary[400]}
         image={sidebarImage}
       >
-        <Menu iconShape="square">
+        <Menu iconshape="square">
           <MenuItem
             icon={
               collapsed ? (
                 <MenuOutlinedIcon onClick={() => collapseSidebar()} />
               ) : sidebarRTL ? (
-                <SwitchLeftOutlinedIcon onClick={() => setSidebarRTL(!sidebarRTL)} />
+                <SwitchLeftOutlinedIcon
+                  onClick={() => setSidebarRTL(!sidebarRTL)}
+                />
               ) : (
-                <SwitchRightOutlinedIcon onClick={() => setSidebarRTL(!sidebarRTL)} />
+                <SwitchRightOutlinedIcon
+                  onClick={() => setSidebarRTL(!sidebarRTL)}
+                />
               )
             }
             style={{
@@ -116,7 +113,9 @@ const MyProSidebar: React.FC = () => {
                   ADMIN
                 </Typography>
                 <IconButton
-                  onClick={broken ? () => toggleSidebar() : () => collapseSidebar()}
+                  onClick={
+                    broken ? () => toggleSidebar() : () => collapseSidebar()
+                  }
                 >
                   <CloseOutlinedIcon />
                 </IconButton>
@@ -197,7 +196,7 @@ const MyProSidebar: React.FC = () => {
               title="Fines"
               to="/invoices"
               icon={<AttachMoneyIcon />}
-              selected={selected}
+              selected={selected}  
               setSelected={setSelected}
             />
 
@@ -229,6 +228,8 @@ const MyProSidebar: React.FC = () => {
               selected={selected}
               setSelected={setSelected}
             />
+
+            
           </Box>
         </Menu>
       </Sidebar>
