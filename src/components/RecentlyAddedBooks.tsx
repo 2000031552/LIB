@@ -40,7 +40,7 @@ const RecentlyAddedBooks: React.FC<RecentlyAddedBooksProps> = ({ isDashboard = f
           <Typography  
             variant="h5"
             fontWeight="600"
-            color={colors.grey[100]}
+            color={colors.greenAccent[500]}
           >
             Recently added books
           </Typography>

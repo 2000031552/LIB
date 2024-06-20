@@ -22,7 +22,7 @@ const Contacts: React.FC = () => {
     },
     { field: "author", headerName: "Author", width: 200 },
     { field: "genre", headerName: "Genre", width: 150 },
-    { field: "publisheddate", headerName: "PublishedDate", width: 150, type: 'date' as const },
+    { field: "publisheddate", headerName: "PublishedDate", width: 150    },
     { field: "available", headerName: "Available copies", width: 150 }
   ];
 

@@ -6,7 +6,7 @@ import {
   useTheme,
   useMediaQuery,
 } from "@mui/material";
-//import Grid from "@mui/material/Unstable_Grid2"; // Import Grid from Material-UI
+import Grid from "@mui/material/Grid";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
@@ -20,7 +20,6 @@ import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import ProgressCircle from "../../components/ProgressCircle";
 import { useNavigate } from "react-router-dom";
-import Grid from "@mui/material/Grid";
 
 // Alias for Box with explicit props type
 const Box: React.FC<React.ComponentProps<typeof MuiBox>> = MuiBox;
@@ -135,41 +134,26 @@ const Dashboard: React.FC = () => {
                 sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={0} increase={''}             />
           </Box>
         </Grid>
-
-        <Grid
-          container
-          item
-          xs={12}
-          sm={12}
-          md={8}
-          lg={8}
-          spacing={1}
-        >
-          <Grid item xs={12}>
-            <Box bgcolor={colors.primary[400]} p="30px" borderRadius="8px">
-              <Typography variant="h5" fontWeight="600">
-                Campaign
-              </Typography>
-              <Box
-                display="flex"
-                flexDirection="column"
-                alignItems="center"
-                mt="25px"
-              >
-                <ProgressCircle size={125} />
-                <Typography
-                  variant="h5"
-                  color={colors.greenAccent[500]}
-                  sx={{ mt: "15px" }}
-                >
-                  $48,352 revenue generated
-                </Typography>
-                <Typography>
-                  Includes extra misc expenditures and costs
-                </Typography>
-              </Box>
+        <Grid container item xs={12} sm={12} md={8} lg={8} spacing={1}>
+        <Grid item xs={12}>
+          <Box bgcolor={colors.primary[400]} borderRadius="8px">
+            <Box
+              mt="25px"
+              p="0 30px"
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+               
             </Box>
-          </Grid>
+            <Box height="500px" m="-20px 0 0 0">
+              <RecentlyAddedBooks isDashboard={true} /> 
+            </Box>
+          </Box>
+        </Grid>
+        </Grid>
+        <Grid container item xs={12} sm={12} md={8} lg={8} spacing={1}>
+           
 
           <Grid item xs={12}>
             <Box bgcolor={colors.primary[400]} p="30px" borderRadius="8px">
@@ -181,8 +165,8 @@ const Dashboard: React.FC = () => {
                 Sales Quantity
               </Typography>
               <Box height="250px" mt="-20px">
-                {/* Replace BarChart component with a placeholder */}
-                <div style={{ width: '100%', height: '100%', backgroundColor: 'lightgrey' }} />
+                  
+                <BarChart isDashboard={true} />
               </Box>
             </Box>
           </Grid>
@@ -251,6 +235,9 @@ const Dashboard: React.FC = () => {
             ))}
           </Box>
         </Grid>
+
+         
+
       </Grid>
     </Box>
   );
