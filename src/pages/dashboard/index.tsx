@@ -136,7 +136,7 @@ const Dashboard: React.FC = () => {
         </Grid>
         <Grid container item xs={12} sm={12} md={8} lg={8} spacing={1}>
         <Grid item xs={12}>
-          <Box bgcolor={colors.primary[400]} borderRadius="8px">
+          <Box bgcolor={colors.primary[400]} borderRadius="8px"  mb={3}>
             <Box
               mt="25px"
               p="0 30px"
@@ -156,7 +156,7 @@ const Dashboard: React.FC = () => {
            
 
           <Grid item xs={12}>
-            <Box bgcolor={colors.primary[400]} p="30px" borderRadius="8px">
+            <Box bgcolor={colors.primary[400]} p="30px" borderRadius="8px" mt={3}>
               <Typography
                 variant="h5"
                 fontWeight="600"
@@ -172,10 +172,10 @@ const Dashboard: React.FC = () => {
           </Grid>
         </Grid>
 
-        <Grid item xs={12} sm={12} md={4} lg={4} xl={4}>
+        <Grid item xs={12} sm={12} md={8} lg={8} xl={4}>
           <Box
             bgcolor={colors.primary[400]}
-            maxHeight="100vh"
+            maxHeight="calc(100vh - 240px)"
             overflow="auto"
             m="25px 0 0 0"
             borderRadius="8px"
