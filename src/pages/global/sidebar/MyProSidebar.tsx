@@ -33,7 +33,7 @@ const Item: React.FC<ItemProps> = ({ title, to, icon, selected, setSelected }) =
   return (
     <MenuItem
       active={selected === title}
-      style={{ color: colors.grey[100] }}
+      style={{ color: colors.greenAccent[500] }}
       onClick={() => setSelected(title)}
       icon={icon}
       component={<Link to={to} />}
@@ -73,11 +73,11 @@ const MyProSidebar: React.FC = () => {
           backgroundColor: "transparent !important",
         },
         "& .menu-item:hover": {
-          color: `${colors.blueAccent[500]} !important`,
+          color: '${colors.blueAccent[500]} !important',
           backgroundColor: "transparent !important",
         },
-        "& .menu-item.active": {
-          color: `${colors.greenAccent[500]} !important`,
+        '& .menu-item.active': {
+          color: '${colors.greenAccent[500]} !important',
           backgroundColor: "transparent !important",
         },
       }}
@@ -111,7 +111,7 @@ const MyProSidebar: React.FC = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[100]}>
+                <Typography variant="h3" color={colors.greenAccent[500]}>
                   ADMIN
                 </Typography>
                 <IconButton
