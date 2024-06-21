@@ -11,13 +11,11 @@ import {
   Grid,
   Paper,
   IconButton,
-  Divider, // Import Divider
+  Divider,
 } from '@mui/material';
-
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-
-import './App.css';
+import { useNavigate } from 'react-router-dom';
 import { grey } from '@mui/material/colors';
 
 const validationSchema = Yup.object({
@@ -31,11 +29,17 @@ const validationSchema = Yup.object({
   .matches(/[^\w]/, 'Password requires a symbol'),
 });
 
-const App: React.FC = () => {
+interface LoginProps {
+  onLogin: () => void;
+}
+
+const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
+<<<<<<< HEAD:src/login.tsx
       emailId: '',
       password: '',
     },
@@ -43,6 +47,20 @@ const App: React.FC = () => {
     onSubmit: (values) => {
       console.log({ values });
       alert(JSON.stringify(values, null, 2));
+=======
+      userId: 'admin@gmail.com',
+      password: 'admin@tsh',
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      // Simulate a login API call
+      console.log(values);
+      setTimeout(() => {
+        // On successful login, call onLogin and navigate to the dashboard
+        onLogin();
+        navigate('/dashboard');
+      }, 1000);
+>>>>>>> 36ffb3876e3e7ef0038b1371927f4cdb6137f340:src/pages/login/index.tsx
     },
   });
 
@@ -51,6 +69,7 @@ const App: React.FC = () => {
   };
 
   return (
+<<<<<<< HEAD:src/login.tsx
     <Container maxWidth="xs">
       <Box
         sx={{
@@ -60,22 +79,35 @@ const App: React.FC = () => {
           marginTop: 10,
         }}
       >
+=======
+    <Box
+      sx={{
+        backgroundColor: '#61dafbaa', // Red background for the entire screen
+        minHeight: '98vh', // Ensures the background covers the entire viewport height
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 4
+        
+      }}
+    >
+      <Container maxWidth="sm">
+>>>>>>> 36ffb3876e3e7ef0038b1371927f4cdb6137f340:src/pages/login/index.tsx
         <Paper
-          elevation={0}
-          sx={{ padding: 6, width: '120%', borderRadius: 6 }}
+          elevation={3}
+          sx={{ padding: 6, width: '100%', borderRadius: 4, backgroundColor: '#f0f8ff' }}
         >
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              marginTop: -6,
             }}
           >
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqarl8GEpNKQocmyV4QUrJbyYmIbCeFR8KfMPp8amnRa-5sRzjm7UJpb7PuEGC4VM31e0&amp;usqp=CAU"
               alt="Logo"
-              style={{ width: '180px',marginTop: '30px', marginBottom: '30px' }} // Adjusted marginBottom
+              style={{ width: '180px', marginTop: '30px', marginBottom: '30px' }}
             />
             <Typography
               component="h1"
@@ -86,13 +118,7 @@ const App: React.FC = () => {
             </Typography>
           </Box>
           <Box component="form" onSubmit={formik.handleSubmit} sx={{ mt: 2 }}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                // alignItems: 'center',
-              }}
-            >
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography
                 variant="subtitle1"
                 align="left"
@@ -104,8 +130,8 @@ const App: React.FC = () => {
 
               <TextField
                 fullWidth
-                id="emailId"
-                name="emailId"
+                id="userId"
+                name="userId"
                 size="small"
                 type='email'
                 placeholder="Enter email"
@@ -157,7 +183,6 @@ const App: React.FC = () => {
                 fullWidth
                 id="password"
                 name="password"
-                // label="Enter password"
                 size="small"
                 placeholder="Enter password"
                 type={showPassword ? 'text' : 'password'}
@@ -196,7 +221,6 @@ const App: React.FC = () => {
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-
                   fontSize: '0.8rem',
                 }}
                 className="Link-underline"
@@ -213,26 +237,23 @@ const App: React.FC = () => {
             >
               Login
             </Button>
-            <Divider sx={{ my: 2, backgroundColor: 'skyblue' }} />{' '}
+            <Divider sx={{ my: 2, backgroundColor: 'skyblue' }} />
             <Link
-                variant="body2"
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-
-                  fontSize: '0.8rem',
-                }}
-                className="Link-underline"
-              >
-                New User?   Register
-              </Link>
-            
-            
+              variant="body2"
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                fontSize: '0.8rem',
+              }}
+              className="Link-underline"
+            >
+              New User? Register
+            </Link>
           </Box>
         </Paper>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 };
 
-export default App;
+export default Login;

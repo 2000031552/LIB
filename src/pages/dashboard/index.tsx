@@ -148,8 +148,13 @@ const Dashboard: React.FC = () => {
             <Box mt="25px" p="0 30px" display="flex" justifyContent="space-between" alignItems="center">
               
             </Box>
+<<<<<<< HEAD
             <Box height="500px" m="-20px 0 0 0">
               <RecentlyAddedBooks isDashboard={true} />
+=======
+            <Box height="490px" m="-20px 0 0 0">
+              <RecentlyAddedBooks isDashboard={true} /> 
+>>>>>>> 36ffb3876e3e7ef0038b1371927f4cdb6137f340
             </Box>
           </Box>
         </Grid>
