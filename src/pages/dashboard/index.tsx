@@ -18,7 +18,6 @@ import Header from "../../components/Header";
 import RecentlyAddedBooks from "../../components/RecentlyAddedBooks";
 import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
-import ProgressCircle from "../../components/ProgressCircle";
 import { useNavigate } from "react-router-dom";
 
 // Alias for Box with explicit props type
@@ -81,8 +80,10 @@ const Dashboard: React.FC = () => {
             <StatBox
               title="12,361"
               subtitle="Members"
-              icon={<GroupIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={0} increase={''}             />
+              icon={<GroupIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
+              progress={0}
+              increase={''}
+            />
           </Box>
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
@@ -98,8 +99,10 @@ const Dashboard: React.FC = () => {
             <StatBox
               title="431,225"
               subtitle="Available books"
-              icon={<BookIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={0} increase={''}            />
+              icon={<BookIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
+              progress={0}
+              increase={''}
+            />
           </Box>
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
@@ -114,8 +117,10 @@ const Dashboard: React.FC = () => {
             <StatBox
               title="3,8767"
               subtitle="Books Borrowed"
-              icon={<LocalLibraryIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={0} increase={''}            />
+              icon={<LocalLibraryIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
+              progress={0}
+              increase={''}
+            />
           </Box>
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
@@ -130,114 +135,70 @@ const Dashboard: React.FC = () => {
             <StatBox
               title="1,325,134"
               subtitle="Amount to be collected"
-              icon={<RequestQuoteOutlinedIcon
-                sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />} progress={0} increase={''}             />
+              icon={<RequestQuoteOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
+              progress={0}
+              increase={''}
+            />
           </Box>
         </Grid>
-        <Grid container item xs={12} sm={12} md={8} lg={8} spacing={1}>
-        <Grid item xs={12}>
-          <Box bgcolor={colors.primary[400]} borderRadius="8px"  mb={3}>
-            <Box
-              mt="25px"
-              p="0 30px"
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-            >
-               
+
+        {/* Recently Added Books */}
+        <Grid item xs={12} sm={12} md={7} lg={7.5}>
+          <Box bgcolor={colors.primary[400]} borderRadius="8px" mb={3}>
+            <Box mt="25px" p="0 30px" display="flex" justifyContent="space-between" alignItems="center">
+              
             </Box>
+ 
+             
+ 
             <Box height="490px" m="-20px 0 0 0">
               <RecentlyAddedBooks isDashboard={true} /> 
+ 
             </Box>
           </Box>
         </Grid>
-        </Grid>
-        <Grid container item xs={12} sm={12} md={8} lg={8} spacing={1}>
+
+        {/* Requests */}
+        <Grid item xs={12} sm={12} md={6} lg={4.5}>
+        <Box bgcolor={colors.primary[400]} p="30px" borderRadius="8px" mt={0.6}>
+        <Typography bgcolor={colors.primary[400]} variant="h5" fontWeight="600" sx={{   color: colors.greenAccent[500] }}>
+              Requests
+            </Typography>
            
-
-          <Grid item xs={12}>
-            <Box bgcolor={colors.primary[400]} p="30px" borderRadius="8px" mt={3}>
-              <Typography
-                variant="h5"
-                fontWeight="600"
-                sx={{ padding: "30px 30px 0 30px" }}
-              >
-                Sales Quantity
-              </Typography>
-              <Box height="250px" mt="-20px">
-                  
-                <BarChart isDashboard={true} />
-              </Box>
-            </Box>
-          </Grid>
-        </Grid>
-
-        <Grid item xs={12} sm={12} md={8} lg={8} xl={4}>
-          <Box
-            bgcolor={colors.primary[400]}
-            maxHeight="calc(100vh - 240px)"
-            overflow="auto"
-            m="25px 0 0 0"
-            borderRadius="8px"
-          >
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-              borderBottom={`4px solid ${colors.primary[500]}`}
-              color={colors.grey[100]}
-              p="15px"
-            >
-              <Typography
-                variant="h5"
-                fontWeight="600"
-                color={colors.grey[100]}
-              >
-                Requests
-              </Typography>
-            </Box>
-            {mockTransactions.map((transaction, i) => (
-              <Box
-                key={`${transaction}-${i}`}
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-                borderBottom={`4px solid ${colors.primary[500]}`}
-                p="15px"
-              >
-                <Box>
-                  <Typography
-                    variant="h5"
-                    fontWeight="600"
-                    color={colors.greenAccent[100]}
-                  >
-                    {transaction.requestId}
-                  </Typography>
-                  <Typography color={colors.grey[100]} alignContent="center">
-                    {transaction.bookTitle}
-                  </Typography>
-                </Box>
+             
+            <Box height="670px" mt="-20px">
+              {/* Rendering mock transactions */}
+              {mockTransactions.map((transaction, i) => (
                 <Box
-                  color={colors.greenAccent[500]}
-                  p="5px 10px"
-                  borderRadius="4px"
-                  alignContent="left"
+                  key={`${transaction}-${i}`}
+                  display="flex"
+                  bgcolor={colors.primary[400]}
+                  justifyContent="space-between"
+                  alignItems="center"
+                  borderBottom={`4px solid ${colors.primary[500]}`}
+                  p="15px"
                 >
-                  {transaction.author}
+                  <Box>
+                    <Typography variant="h6" fontWeight="600" color={colors.greenAccent[100]}>
+                      {transaction.requestId}
+                    </Typography>
+                    </Box>
+                    <Box>
+                    <Typography color={colors.grey[100]} alignContent="center">
+                      {transaction.bookTitle}
+                    </Typography>
+                  </Box>
+                  <Box color={colors.greenAccent[500]} p="5px 10px" borderRadius="4px" alignContent="left">
+                    {transaction.author}
+                  </Box>
+                  <Box p="5px 10px" borderRadius="4px">
+                    {transaction.userId}
+                  </Box>
                 </Box>
-                <Box
-                  p="5px 10px"
-                  borderRadius="4px"
-                >
-                  {transaction.userId}
-                </Box>
-              </Box>
-            ))}
+              ))}
+            </Box>
           </Box>
         </Grid>
-
-         
-
       </Grid>
     </Box>
   );
