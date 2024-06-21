@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 
-import React from 'react';
-=======
+
+
 import React, { useState } from 'react';
->>>>>>> 36ffb3876e3e7ef0038b1371927f4cdb6137f340
+
 import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route, Navigate } from 'react-router-dom';

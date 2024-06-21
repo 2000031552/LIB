@@ -22,11 +22,7 @@ const validationSchema = Yup.object({
   userId: Yup.string()
     .email('Enter a valid email')
     .required('Email is required'),
-  password: Yup.string().required('Password is required').min(8, 'Password must be 8 characters long')
-  .matches(/[0-9]/, 'Password requires a number')
-  .matches(/[a-z]/, 'Password requires a lowercase letter')
-  .matches(/[A-Z]/, 'Passwod requires a uppercase letter')
-  .matches(/[^\w]/, 'Password requires a symbol'),
+  password: Yup.string().required('Password is required'),
 });
 
 interface LoginProps {
@@ -39,15 +35,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
   const formik = useFormik({
     initialValues: {
-<<<<<<< HEAD:src/login.tsx
-      emailId: '',
-      password: '',
-    },
-    validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log({ values });
-      alert(JSON.stringify(values, null, 2));
-=======
       userId: 'admin@gmail.com',
       password: 'admin@tsh',
     },
@@ -60,7 +47,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         onLogin();
         navigate('/dashboard');
       }, 1000);
->>>>>>> 36ffb3876e3e7ef0038b1371927f4cdb6137f340:src/pages/login/index.tsx
     },
   });
 
@@ -69,17 +55,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   };
 
   return (
-<<<<<<< HEAD:src/login.tsx
-    <Container maxWidth="xs">
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          marginTop: 10,
-        }}
-      >
-=======
     <Box
       sx={{
         backgroundColor: '#61dafbaa', // Red background for the entire screen
@@ -92,7 +67,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       }}
     >
       <Container maxWidth="sm">
->>>>>>> 36ffb3876e3e7ef0038b1371927f4cdb6137f340:src/pages/login/index.tsx
         <Paper
           elevation={3}
           sx={{ padding: 6, width: '100%', borderRadius: 4, backgroundColor: '#f0f8ff' }}
@@ -133,18 +107,17 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 id="userId"
                 name="userId"
                 size="small"
-                type='email'
                 placeholder="Enter email"
-                value={formik.values.emailId}
+                value={formik.values.userId}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  (formik.touched.emailId || formik.submitCount > 0) &&
-                  Boolean(formik.errors.emailId)
+                  (formik.touched.userId || formik.submitCount > 0) &&
+                  Boolean(formik.errors.userId)
                 }
                 helperText={
-                  (formik.touched.emailId || formik.submitCount > 0) &&
-                  formik.errors.emailId
+                  (formik.touched.userId || formik.submitCount > 0) &&
+                  formik.errors.userId
                 }
                 margin="dense"
                 sx={{

@@ -60,11 +60,11 @@ const Contacts: React.FC = () => {
             color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
-<<<<<<< HEAD
-            backgroundColor: colors.greenAccent[700],
-=======
+ 
+            
+ 
             backgroundColor: `${colors.blueAccent[700]} !important`, // Ensure high specificity
->>>>>>> 36ffb3876e3e7ef0038b1371927f4cdb6137f340
+ 
             borderBottom: "none",
             color: colors.grey[100], // Ensure the header text is visible
           },
