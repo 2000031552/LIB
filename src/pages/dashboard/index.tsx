@@ -60,7 +60,7 @@ const Dashboard: React.FC = () => {
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Reports
+            User Reports
           </Button>
         </Box>
       </Box>
