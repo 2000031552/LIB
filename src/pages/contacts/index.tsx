@@ -1,19 +1,18 @@
 import React from 'react';
-import { Box, Button, useTheme  } from "@mui/material";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { Box, Button, useTheme } from "@mui/material";
+import { DataGrid, GridToolbar, GridColDef } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
- 
+
 const Contacts: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const columns = [
+  const columns: GridColDef[] = [
     { field: "id", headerName: "Id", width: 100 },
     { field: "ISBN", headerName: "ISBN", width: 150 },
-   
     {
       field: "name",
       headerName: "BookTitle",
@@ -22,7 +21,7 @@ const Contacts: React.FC = () => {
     },
     { field: "author", headerName: "Author", width: 200 },
     { field: "genre", headerName: "Genre", width: 150 },
-    { field: "publisheddate", headerName: "PublishedDate", width: 150    },
+    { field: "publisheddate", headerName: "PublishedDate", width: 150 },
     { field: "available", headerName: "Available copies", width: 150 }
   ];
 
@@ -34,7 +33,6 @@ const Contacts: React.FC = () => {
 
   return (
     <Box m="16px">
-       
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="Books" subtitle="Total Books Data" />
         <Button
@@ -62,8 +60,9 @@ const Contacts: React.FC = () => {
             color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700],
+            backgroundColor: `${colors.blueAccent[700]} !important`, // Ensure high specificity
             borderBottom: "none",
+            color: colors.grey[100], // Ensure the header text is visible
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: colors.primary[400],

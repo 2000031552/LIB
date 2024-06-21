@@ -146,7 +146,7 @@ const Dashboard: React.FC = () => {
             >
                
             </Box>
-            <Box height="500px" m="-20px 0 0 0">
+            <Box height="490px" m="-20px 0 0 0">
               <RecentlyAddedBooks isDashboard={true} /> 
             </Box>
           </Box>
