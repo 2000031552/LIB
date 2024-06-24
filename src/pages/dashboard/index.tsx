@@ -37,6 +37,11 @@ const Dashboard: React.FC = () => {
     navigate('/contacts');
   };
 
+  const handleReportsClick = () => {
+    navigate('/reports');
+    console.log('Reports clicked');
+  };
+
   return (
     <Box m="20px">
       {/* HEADER */}
@@ -58,6 +63,7 @@ const Dashboard: React.FC = () => {
               fontWeight: "bold",
               padding: "10px 20px",
             }}
+            onClick={handleReportsClick}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
             User Reports
