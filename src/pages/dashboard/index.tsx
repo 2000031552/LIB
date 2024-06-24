@@ -36,10 +36,14 @@ const Dashboard: React.FC = () => {
   const handleBooksClick = () => {
     navigate('/contacts');
   };
+ 
+
   const handleReportsClick = () => {
     navigate('/reports');
-    console.log("Reports clicked");
+    console.log('Reports clicked');
   };
+
+ 
   return (
     <Box m="20px">
       {/* HEADER */}

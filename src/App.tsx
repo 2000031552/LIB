@@ -24,8 +24,12 @@ import Bookstatus from "./pages/bookstatus";
 import EachBookDetails from "./pages/eachbook";
 import UserDashboard from "./pages/userdashboard";
 import Login from './pages/login'; // Import your Login component here
+ 
 import UserBooks from './pages/userbooks';
-//import Reports from './pages/reports';
+ 
+import Reports from './pages/reports';
+
+ 
 const App: React.FC = () => {
   const [theme, colorMode] = useMode();
   const [loggedIn, setLoggedIn] = useState<boolean>(false); // State to track login status
@@ -62,7 +66,11 @@ const App: React.FC = () => {
                       <Route path="/addbook" element={<AddBook />} />
                       <Route path="/faq" element={<FAQ />} />
                       <Route path="/calendar" element={<Calendar />} />
-                      {/* //<Route path="/reports" element={<Reports />} /> */}
+ 
+                       
+ 
+                      <Route path="/reports" element={<Reports />} />
+ 
                     </Routes>
                   </main>
                 </div>
