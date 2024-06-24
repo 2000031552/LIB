@@ -149,13 +149,13 @@ const Dashboard: React.FC = () => {
         </Grid>
 
         {/* Recently Added Books */}
-        <Grid item xs={12} sm={12} md={7} lg={7.5}>
+        <Grid item xs={12} sm={12} md={6} lg={6}>
           <Box bgcolor={colors.primary[400]} borderRadius="8px" mb={3}>
             <Box mt="25px" p="0 30px" display="flex" justifyContent="space-between" alignItems="center">
               
             </Box>
  
-             
+                
  
             <Box height="490px" m="-20px 0 0 0">
               <RecentlyAddedBooks isDashboard={true} /> 
@@ -165,7 +165,7 @@ const Dashboard: React.FC = () => {
         </Grid>
 
         {/* Requests */}
-        <Grid item xs={12} sm={12} md={6} lg={4.5}>
+        <Grid item xs={12} sm={12} md={6} lg={6}>
         <Box bgcolor={colors.primary[400]} p="30px" borderRadius="8px" mt={0.6}>
         <Typography bgcolor={colors.primary[400]} variant="h5" fontWeight="600" sx={{   color: colors.greenAccent[500] }}>
               Requests
