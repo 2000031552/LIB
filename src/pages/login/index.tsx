@@ -36,7 +36,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const formik = useFormik({
     initialValues: {
       userId: 'admin@gmail.com',
-      password: 'admin@tsh',
+      password: 'admin@123',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -44,8 +44,16 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       console.log(values);
       setTimeout(() => {
         // On successful login, call onLogin and navigate to the dashboard
+        if (values.userId === 'admin@gmail.com' && values.password === 'admin@123') {
+          navigate('/dashboard');
+        } else if (values.userId === 'user@gmail.com' && values.password === 'user@123') {
+          navigate('/user-dashboard');
+        } else {
+          // Handle invalid credentials
+          alert('Invalid credentials');
+        }
         onLogin();
-        navigate('/dashboard');
+        //navigate('/dashboard');
       }, 1000);
     },
   });

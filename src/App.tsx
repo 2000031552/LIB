@@ -21,8 +21,11 @@ import FAQ from "./pages/faq";
 import AddBook from "./pages/addbook";
 import BookDetails from './pages/bookdetails';
 import Bookstatus from "./pages/bookstatus";
+import EachBookDetails from "./pages/eachbook";
+import UserDashboard from "./pages/userdashboard";
 import Login from './pages/login'; // Import your Login component here
-
+import UserBooks from './pages/userbooks';
+//import Reports from './pages/reports';
 const App: React.FC = () => {
   const [theme, colorMode] = useMode();
   const [loggedIn, setLoggedIn] = useState<boolean>(false); // State to track login status
@@ -34,7 +37,7 @@ const App: React.FC = () => {
 
   return (
     <Routes>
-      {loggedIn ? (
+       {loggedIn ? (
         <Route path="*" element={
           <ColorModeContext.Provider value={colorMode}>
             <ThemeProvider theme={theme}>
@@ -45,17 +48,21 @@ const App: React.FC = () => {
                   <main>
                     <Routes>
                       <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/user-dashboard" element={<UserDashboard />} />
+                      <Route path="/userbooks" element={<UserBooks />} />
                       <Route path="/change-password" element={<ChangePassword />} />
                       <Route path="/profile" element={<Profile />} />
                       <Route path="/team" element={<Team />} />
                       <Route path="/contacts" element={<Contacts />} />
                       <Route path="/bookstatus" element={<Bookstatus />} />
                       <Route path="/bookdetails/:id" element={<BookDetails />} />
+                      <Route path="/eachbook/:id" element={<EachBookDetails />} />
                       <Route path="/invoices" element={<Invoices />} />
                       <Route path="/form" element={<Form />} />
                       <Route path="/addbook" element={<AddBook />} />
                       <Route path="/faq" element={<FAQ />} />
                       <Route path="/calendar" element={<Calendar />} />
+                      {/* //<Route path="/reports" element={<Reports />} /> */}
                     </Routes>
                   </main>
                 </div>

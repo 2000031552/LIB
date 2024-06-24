@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box, Button, useTheme } from "@mui/material";
+import { Box,  useTheme } from "@mui/material";
 import { DataGrid, GridToolbar, GridColDef } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 
-const Contacts: React.FC = () => {
+const UserBooks: React.FC  = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -32,24 +32,11 @@ const Contacts: React.FC = () => {
     }
   };
 
-  const handleAddBook = () => {
-    navigate("/addbook");
-  };
+   
 
   return (
     <Box m="16px">
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Books" subtitle="Total Books Data" />
-        <Button
-          variant="contained"
-          color="secondary"
-          size="large"
-          style={{ borderRadius: '7px' }}
-          onClick={handleAddBook}
-        >
-          Add Book
-        </Button>
-      </Box>
+       
       <Box
         m="8px 0 0 0"
         width="100%"
@@ -99,4 +86,4 @@ const Contacts: React.FC = () => {
   );
 };
 
-export default Contacts;
+export default UserBooks;
