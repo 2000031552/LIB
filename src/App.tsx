@@ -18,6 +18,7 @@ import AddBook from "./pages/addbook";
 import BookDetails from './pages/bookdetails';
 import Bookstatus from "./pages/bookstatus";
 import Login from './pages/login'; // Import your Login component here
+import Reports from './pages/reports';
 
 const App: React.FC = () => {
   const [theme, colorMode] = useMode();
@@ -52,6 +53,7 @@ const App: React.FC = () => {
                       <Route path="/addbook" element={<AddBook />} />
                       <Route path="/faq" element={<FAQ />} />
                       <Route path="/calendar" element={<Calendar />} />
+                      <Route path="/reports" element={<Reports />} />
                     </Routes>
                   </main>
                 </div>
