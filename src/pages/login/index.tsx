@@ -15,7 +15,6 @@ import {
 } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import { useNavigate } from 'react-router-dom';
 import { grey } from '@mui/material/colors';
 
 const validationSchema = Yup.object({
@@ -26,12 +25,11 @@ const validationSchema = Yup.object({
 });
 
 interface LoginProps {
-  onLogin: () => void;
+  onLogin: (userRole: string) => void;
 }
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -41,19 +39,16 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       // Simulate a login API call
-      console.log(values);
       setTimeout(() => {
-        // On successful login, call onLogin and navigate to the dashboard
+        // On successful login, call onLogin and let the parent handle routing
         if (values.userId === 'admin@gmail.com' && values.password === 'admin@123') {
-          navigate('/dashboard');
+          onLogin('admin');
         } else if (values.userId === 'user@gmail.com' && values.password === 'user@123') {
-          navigate('/user-dashboard');
+          onLogin('user');
         } else {
           // Handle invalid credentials
           alert('Invalid credentials');
         }
-        onLogin();
-        //navigate('/dashboard');
       }, 1000);
     },
   });
@@ -65,13 +60,12 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   return (
     <Box
       sx={{
-        backgroundColor: '#61dafbaa', // Red background for the entire screen
-        minHeight: '98vh', // Ensures the background covers the entire viewport height
+        backgroundColor: '#61dafbaa',
+        minHeight: '98vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 4
-        
       }}
     >
       <Container maxWidth="sm">
@@ -96,7 +90,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               variant="h6"
               sx={{ fontWeight: 600, fontSize: '1.5rem', marginTop: -8 }}
             >
-              Welcome Back !
+              Welcome Back!
             </Typography>
           </Box>
           <Box component="form" onSubmit={formik.handleSubmit} sx={{ mt: 2 }}>

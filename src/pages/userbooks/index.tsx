@@ -37,6 +37,7 @@ const UserBooks: React.FC  = () => {
   return (
     <Box m="16px">
        
+       <Header title="Books" subtitle="Total Books Data" />
       <Box
         m="8px 0 0 0"
         width="100%"
@@ -83,6 +84,7 @@ const UserBooks: React.FC  = () => {
         />
       </Box>
     </Box>
+     
   );
 };
 

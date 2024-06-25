@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext, ReactNode, Dispatch, SetStateAction } from "react";
 import { ProSidebarProvider } from "react-pro-sidebar";
-import MyProSidebar from "./MyProSidebar";
+//import MyProSidebar from "./MyProSidebar";
 
 // Define the type for the context value
 interface SidebarContextType {
@@ -17,9 +17,10 @@ const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
 interface MyProSidebarProviderProps {
   children: ReactNode;
+  SidebarComponent: React.ComponentType;
 }
 
-export const MyProSidebarProvider: React.FC<MyProSidebarProviderProps> = ({ children }) => {
+export const MyProSidebarProvider: React.FC<MyProSidebarProviderProps> = ({ children, SidebarComponent }) => {
   // State definitions with explicit types
   const [sidebarRTL, setSidebarRTL] = useState<boolean>(false);
   const [sidebarBackgroundColor, setSidebarBackgroundColor] = useState<string | undefined>(undefined);
@@ -43,7 +44,7 @@ export const MyProSidebarProvider: React.FC<MyProSidebarProviderProps> = ({ chil
             flexDirection: sidebarRTL ? "row-reverse" : "row",
           }}
         >
-          <MyProSidebar />
+          <SidebarComponent />
           {children}
         </div>
       </SidebarContext.Provider>

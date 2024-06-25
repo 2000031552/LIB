@@ -84,9 +84,10 @@ const Topbar: React.FC = () => {
         <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
             <LightModeOutlinedIcon />
+        //console.log("dark mode");
           ) : (
             <DarkModeOutlinedIcon />
-          )}
+          )}   
         </IconButton>
         <IconButton>
           <NotificationsOutlinedIcon />

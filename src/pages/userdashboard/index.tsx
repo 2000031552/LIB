@@ -33,7 +33,9 @@ const UserDashboard: React.FC = () => {
   const handleBooksClick = () => {
     navigate('/userbooks');
   };
-
+  const handleBorrowsClick = () => {
+    navigate('/userbookhistory');
+  };
   return (
     <Box m="20px">
       {/* HEADER */}
@@ -78,6 +80,7 @@ const UserDashboard: React.FC = () => {
             alignItems="center"
             justifyContent="center"
             borderRadius="8px"
+            onClick={handleBorrowsClick}
             sx={{ width: '100%', height: '100%' }}
           >
             <StatBox

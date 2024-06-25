@@ -26,9 +26,10 @@ const Contacts: React.FC = () => {
   ];
 
   const navigate = useNavigate();
-  const handleCellClick = (params: { field: string; id: string | number }) => {
+  const handleCellClick = (params: { field: string;row: any }) => {
     if (params.field === 'name') {
-      navigate(`/eachbook/${params.id}`);
+      console.log("contacts")
+      navigate(`/eachbook/${params.row.id}`);
     }
   };
 
