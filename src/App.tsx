@@ -46,7 +46,7 @@ const App: React.FC = () => {
 
   const handleLogin = (userRole: string) => {
     localStorage.setItem('role', userRole);
-    setIsAdmin(userRole === '');
+    setIsAdmin(userRole === 'admin');
     navigate(userRole === 'admin' ? '/dashboard' : '/user-dashboard');
   };
 
