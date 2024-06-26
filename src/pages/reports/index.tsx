@@ -5,8 +5,10 @@ import Box from '@mui/material/Box';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useTheme, Typography } from '@mui/material';
 import { tokens } from "../../theme";
-import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
+import BooksLost from '../../components/bookslost';
+import MostBorrowedBook from '../../components/mostborrowedbook';
+import NeverBorrowedBooks from '../../components/neverborrowedbooks';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -46,29 +48,13 @@ const Reports: React.FC = () => {
     setValue(newValue);
   };
 
-  const columns: GridColDef[] = [
-    { field: "id", headerName: "Id", width: 100 },
-    {
-      field: "name",
-      headerName: "Name",
-      width: 200,
-      cellClassName: "name-column--cell",
-    },
-    { field: "email", headerName: "Email", width: 300 },
-    {
-      field: "bookTitle",
-      headerName: "Book Title",
-      width: 300,
-    },
-  ];
-
   return (
     <Box sx={{ width: 'flex',  }} m="20px">
       <Header title="Reports" subtitle="Reports and Data" />
       <Box sx={{ borderBottom: 1, borderColor: 'divider', mt: 1 }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab 
-            label="Tab One" 
+            label="Books Lost" 
             {...a11yProps(0)} 
             sx={{ 
               color: value === 0 ? colors.blueAccent[500] : 'inherit',
@@ -78,7 +64,7 @@ const Reports: React.FC = () => {
             }} 
           />
           <Tab 
-            label="Tab Two" 
+            label="Most Borrowed Books" 
             {...a11yProps(1)} 
             sx={{ 
               color: value === 1 ? colors.blueAccent[500] : 'inherit',
@@ -88,7 +74,7 @@ const Reports: React.FC = () => {
             }} 
           />
           <Tab 
-            label="Tab Three" 
+            label="Never Borrowed Books" 
             {...a11yProps(2)} 
             sx={{ 
               color: value === 2 ? colors.blueAccent[500] : 'inherit',
@@ -100,148 +86,13 @@ const Reports: React.FC = () => {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <Box
-          mt="18px"
-          p="20px"
-          height="75vh"
-          bgcolor={colors.primary[400]}
-          borderRadius="8px"
-          sx={{
-            "& .MuiDataGrid-root": {
-              border: "none",
-            },
-            "& .MuiDataGrid-cell": {
-              borderBottom: "none",
-            },
-            "& .name-column--cell": {
-              color: colors.greenAccent[300],
-            },
-            "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: `${colors.blueAccent[700]} !important`,
-              borderBottom: "none",
-            },
-            "& .MuiDataGrid-columnHeader": {
-              backgroundColor: `${colors.blueAccent[700]} !important`,
-            },
-            "& .MuiDataGrid-columnHeaderTitle": {
-              color: `${colors.grey[100]} !important`,
-            },
-            "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: colors.primary[400],
-            },
-            "& .MuiDataGrid-footerContainer": {
-              borderTop: "none",
-              backgroundColor: `${colors.blueAccent[700]} !important`,
-            },
-            "& .MuiCheckbox-root": {
-              color: `${colors.greenAccent[200]} !important`,
-            },
-          }}
-        >
-          <DataGrid
-            rows={mockDataTeam}
-            columns={columns}
-            pageSize={9}
-            checkboxSelection
-            disableSelectionOnClick
-          />
-        </Box>
+        <BooksLost />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <Box
-          mt="18px"
-          p="20px"
-          height="75vh"
-          bgcolor={colors.primary[400]}
-          borderRadius="8px"
-          sx={{
-            "& .MuiDataGrid-root": {
-              border: "none",
-            },
-            "& .MuiDataGrid-cell": {
-              borderBottom: "none",
-            },
-            "& .name-column--cell": {
-              color: colors.greenAccent[300],
-            },
-            "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: `${colors.blueAccent[700]} !important`,
-              borderBottom: "none",
-            },
-            "& .MuiDataGrid-columnHeader": {
-              backgroundColor: `${colors.blueAccent[700]} !important`,
-            },
-            "& .MuiDataGrid-columnHeaderTitle": {
-              color: `${colors.grey[100]} !important`,
-            },
-            "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: colors.primary[400],
-            },
-            "& .MuiDataGrid-footerContainer": {
-              borderTop: "none",
-              backgroundColor: `${colors.blueAccent[700]} !important`,
-            },
-            "& .MuiCheckbox-root": {
-              color: `${colors.greenAccent[200]} !important`,
-            },
-          }}
-        >
-          <DataGrid
-            rows={mockDataTeam}
-            columns={columns}
-            pageSize={9}
-            checkboxSelection
-            disableSelectionOnClick
-          />
-        </Box>
+        <MostBorrowedBook />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <Box
-          mt="18px"
-          p="20px"
-          height="75vh"
-          bgcolor={colors.primary[400]}
-          borderRadius="8px"
-          sx={{
-            "& .MuiDataGrid-root": {
-              border: "none",
-            },
-            "& .MuiDataGrid-cell": {
-              borderBottom: "none",
-            },
-            "& .name-column--cell": {
-              color: colors.greenAccent[300],
-            },
-            "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: `${colors.blueAccent[700]} !important`,
-              borderBottom: "none",
-            },
-            "& .MuiDataGrid-columnHeader": {
-              backgroundColor: `${colors.blueAccent[700]} !important`,
-            },
-            "& .MuiDataGrid-columnHeaderTitle": {
-              color: `${colors.grey[100]} !important`,
-            },
-            "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: colors.primary[400],
-            },
-            "& .MuiDataGrid-footerContainer": {
-              borderTop: "none",
-              backgroundColor: `${colors.blueAccent[700]} !important`,
-            },
-            "& .MuiCheckbox-root": {
-              color: `${colors.greenAccent[200]} !important`,
-            },
-          }}
-        >
-          <DataGrid
-            rows={mockDataTeam}
-            columns={columns}
-            pageSize={9}
-            checkboxSelection
-            disableSelectionOnClick
-          />
-        </Box>
+        <NeverBorrowedBooks />
       </CustomTabPanel>
     </Box>
   );

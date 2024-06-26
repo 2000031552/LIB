@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Box as MuiBox,
   Button,
@@ -10,10 +10,10 @@ import Grid from "@mui/material/Grid";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import BookIcon from '@mui/icons-material/Book';
-import RequestQuoteOutlinedIcon from '@mui/icons-material/RequestQuoteOutlined';
-import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
-import GroupIcon from '@mui/icons-material/Group';
+import BookIcon from "@mui/icons-material/Book";
+import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
+import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
+import GroupIcon from "@mui/icons-material/Group";
 import Header from "../../components/Header";
 import RecentlyAddedBooks from "../../components/RecentlyAddedBooks";
 import BarChart from "../../components/BarChart";
@@ -30,20 +30,18 @@ const Dashboard: React.FC = () => {
   const navigate = useNavigate();
 
   const handleMembersClick = () => {
-    navigate('/team');
+    navigate("/team");
   };
 
   const handleBooksClick = () => {
-    navigate('/contacts');
+    navigate("/contacts");
   };
- 
 
   const handleReportsClick = () => {
-    navigate('/reports');
-    console.log('Reports clicked');
+    navigate("/reports");
+    console.log("Reports clicked");
   };
 
- 
   return (
     <Box m="20px">
       {/* HEADER */}
@@ -83,14 +81,18 @@ const Dashboard: React.FC = () => {
             justifyContent="center"
             borderRadius="8px"
             onClick={handleMembersClick}
-            sx={{ cursor: 'pointer', width: '100%', height: '100%' }}
+            sx={{ cursor: "pointer", width: "100%", height: "100%" }}
           >
             <StatBox
               title="12,361"
               subtitle="Members"
-              icon={<GroupIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
-              progress={0.50}
-              increase={'50%'}
+              icon={
+                <GroupIcon
+                  sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                />
+              }
+              progress={0.5}
+              increase={"50%"}
             />
           </Box>
         </Grid>
@@ -102,14 +104,18 @@ const Dashboard: React.FC = () => {
             justifyContent="center"
             borderRadius="8px"
             onClick={handleBooksClick}
-            sx={{ cursor: 'pointer', width: '100%', height: '100%' }}
+            sx={{ cursor: "pointer", width: "100%", height: "100%" }}
           >
             <StatBox
               title="431,225"
               subtitle="Available books"
-              icon={<BookIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
+              icon={
+                <BookIcon
+                  sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                />
+              }
               progress={0.25}
-              increase={'25%'}
+              increase={"25%"}
             />
           </Box>
         </Grid>
@@ -120,14 +126,18 @@ const Dashboard: React.FC = () => {
             alignItems="center"
             justifyContent="center"
             borderRadius="8px"
-            sx={{ width: '100%', height: '100%' }}
+            sx={{ width: "100%", height: "100%" }}
           >
             <StatBox
               title="3,8767"
               subtitle="Books Borrowed"
-              icon={<LocalLibraryIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
-              progress={0.40}
-              increase={'40%'}
+              icon={
+                <LocalLibraryIcon
+                  sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                />
+              }
+              progress={0.4}
+              increase={"40%"}
             />
           </Box>
         </Grid>
@@ -138,42 +148,56 @@ const Dashboard: React.FC = () => {
             alignItems="center"
             justifyContent="center"
             borderRadius="8px"
-            sx={{ width: '100%', height: '100%' }}
+            sx={{ width: "100%", height: "100%" }}
           >
             <StatBox
               title="1,325,134"
               subtitle="Amount to be collected"
-              icon={<RequestQuoteOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
-              progress={0.60}
-              increase={'60%'}
+              icon={
+                <RequestQuoteOutlinedIcon
+                  sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                />
+              }
+              progress={0.6}
+              increase={"60%"}
             />
           </Box>
         </Grid>
 
         {/* Recently Added Books */}
-        <Grid item xs={12} sm={12} md={6} lg={6}>
+        <Grid item xs={12} sm={12} md={6} lg={7.5}>
           <Box bgcolor={colors.primary[400]} borderRadius="8px" mb={3}>
-            <Box mt="25px" p="0 30px" display="flex" justifyContent="space-between" alignItems="center">
-              
-            </Box>
- 
-             
- 
+            <Box
+              mt="25px"
+              p="0 30px"
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+            ></Box>
+
             <Box height="490px" m="-20px 0 0 0">
-              <RecentlyAddedBooks isDashboard={true} /> 
- 
+              <RecentlyAddedBooks isDashboard={true} />
             </Box>
           </Box>
         </Grid>
 
         {/* Requests */}
-        <Grid item xs={12} sm={12} md={6} lg={6}>
-        <Box bgcolor={colors.primary[400]} p="30px" borderRadius="8px" mt={0.6}>
-        <Typography bgcolor={colors.primary[400]} variant="h5" fontWeight="600" sx={{   color: colors.greenAccent[500] }}>
+        <Grid item xs={12} sm={12} md={6} lg={4.5}>
+          <Box
+            bgcolor={colors.primary[400]}
+            p="30px"
+            borderRadius="8px"
+            mt={0.6}
+          >
+            <Typography
+              bgcolor={colors.primary[400]}
+              variant="h5"
+              fontWeight="600"
+              sx={{ color: colors.greenAccent[500] }}
+            >
               Requests
             </Typography>
-           
-             
+
             <Box height="670px" mt="-20px">
               {/* Rendering mock transactions */}
               {mockTransactions.map((transaction, i) => (
@@ -187,16 +211,25 @@ const Dashboard: React.FC = () => {
                   p="15px"
                 >
                   <Box>
-                    <Typography variant="h6" fontWeight="600" color={colors.greenAccent[100]}>
+                    <Typography
+                      variant="h6"
+                      fontWeight="600"
+                      color={colors.greenAccent[100]}
+                    >
                       {transaction.requestId}
                     </Typography>
-                    </Box>
-                    <Box>
+                  </Box>
+                  <Box>
                     <Typography color={colors.grey[100]} alignContent="center">
                       {transaction.bookTitle}
                     </Typography>
                   </Box>
-                  <Box color={colors.greenAccent[500]} p="5px 10px" borderRadius="4px" alignContent="left">
+                  <Box
+                    color={colors.greenAccent[500]}
+                    p="5px 10px"
+                    borderRadius="4px"
+                    alignContent="left"
+                  >
                     {transaction.author}
                   </Box>
                   <Box p="5px 10px" borderRadius="4px">

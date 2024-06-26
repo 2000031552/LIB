@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Box, Button, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar, GridColDef } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
@@ -22,13 +22,13 @@ const Contacts: React.FC = () => {
     { field: "author", headerName: "Author", width: 200 },
     { field: "genre", headerName: "Genre", width: 150 },
     { field: "publisheddate", headerName: "PublishedDate", width: 150 },
-    { field: "available", headerName: "Available copies", width: 150 }
+    { field: "available", headerName: "Available copies", width: 150 },
   ];
 
   const navigate = useNavigate();
-  const handleCellClick = (params: { field: string;row: any }) => {
-    if (params.field === 'name') {
-      console.log("contacts")
+  const handleCellClick = (params: { field: string; row: any }) => {
+    if (params.field === "name") {
+      console.log("contacts");
       navigate(`/eachbook/${params.row.id}`);
     }
   };
@@ -45,7 +45,7 @@ const Contacts: React.FC = () => {
           variant="contained"
           color="secondary"
           size="large"
-          style={{ borderRadius: '7px' }}
+          style={{ borderRadius: "7px" }}
           onClick={handleAddBook}
         >
           Add Book
@@ -66,11 +66,8 @@ const Contacts: React.FC = () => {
             color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
- 
-            
- 
             backgroundColor: `${colors.blueAccent[700]} !important`, // Ensure high specificity
- 
+
             borderBottom: "none",
             color: colors.grey[100], // Ensure the header text is visible
           },
@@ -85,7 +82,7 @@ const Contacts: React.FC = () => {
             color: `${colors.greenAccent[200]} !important`,
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            color: `${colors.grey[100]} !important`,
+            color: `${colors.greenAccent[200]} !important`,
           },
         }}
       >
