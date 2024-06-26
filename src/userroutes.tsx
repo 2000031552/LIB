@@ -15,6 +15,7 @@ import Userequestform from "./pages/userrequestform";
 import UserAllRequests from "./pages/userallrequests";
 import ChangePassword from "./pages/changePassword";
 import Profile from "./pages/profile";
+//import Signup from "./pages/signup";
 const userRoutes: RouteObject[] = [
   { path: "/change-password", element: <ChangePassword /> },
   { path: "/profile", element: <Profile /> },
@@ -29,6 +30,7 @@ const userRoutes: RouteObject[] = [
   { path: "/bookdetails/:id", element: <BookDetails /> },
   // Define other user routes
   { path: "/login", element: <Login onLogin={() => {}} /> },
+  //{ path: "/signup", element: <Signup /> },
 ];
 
 export default userRoutes;

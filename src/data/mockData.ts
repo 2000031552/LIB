@@ -258,7 +258,7 @@ export const mockDataBookdetails = [
     userid: 101,
     username: 'Keerthi',
     ISBN: '123512',
-    
+    duedate: '2023-01-10',
     bookcode:'21EF89',
     borroweddate: '2023-01-15',
     returndate: '2023-02-15',
@@ -269,6 +269,7 @@ export const mockDataBookdetails = [
     userid: 102,
     username: 'Ganesh',
     ISBN: '9780261102217',
+    duedate: '2023-01-10',
     bookcode:'34AC67',
     borroweddate: '2023-01-15',
     returndate: '2023-02-15',

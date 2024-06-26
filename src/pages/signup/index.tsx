@@ -17,7 +17,7 @@ import {
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-import './App.css';
+ 
 import { grey } from '@mui/material/colors';
 
 const validationSchema = Yup.object({
@@ -28,7 +28,7 @@ const validationSchema = Yup.object({
   password: Yup.string().required('Password is required'),
 });
 
-const App: React.FC = () => {
+const Signup: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const formik = useFormik({
@@ -259,4 +259,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default Signup;

@@ -15,6 +15,7 @@ import Bookstatus from "./pages/bookstatus";
 import EachBookDetails from "./pages/eachbook";
 import Reports from './pages/reports';
 import Login from './pages/login';
+//import Signup from './pages/signup';
  
 const adminRoutes: RouteObject[] = [
   { path: "/login", element: <Login onLogin={() => {}} /> },
@@ -31,7 +32,7 @@ const adminRoutes: RouteObject[] = [
   { path: "/adminaddform", element: <AdminAddForm /> },
   { path: "/calendar", element: <Calendar /> },
   { path: "/bookrequests", element: <BookRequests /> },
-   
+  //{ path: "/signup", element: <Signup /> },
   { path: "/reports", element: <Reports /> },
    
    

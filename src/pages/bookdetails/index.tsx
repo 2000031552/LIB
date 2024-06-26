@@ -16,6 +16,7 @@ const BookDetails: React.FC = () => {
     { field: 'ISBN', headerName: 'ISBN', width: 150 },
     { field: 'bookcode', headerName: 'Book Code', width: 150 },
     { field: 'borroweddate', headerName: 'Borrowed Date', width: 150 },
+    { field: 'duedate', headerName: 'Due Date', width: 150 },
     { field: 'returndate', headerName: 'Return Date', width: 150 },
     { field: 'status', headerName: 'Status', width: 150 },
   ];

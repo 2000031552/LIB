@@ -16,6 +16,7 @@ import {
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { grey } from '@mui/material/colors';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   userId: Yup.string()
@@ -30,6 +31,7 @@ interface LoginProps {
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -221,6 +223,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 fontSize: '0.8rem',
               }}
               className="Link-underline"
+              //onClick={() => navigate('/signup')}
             >
               New User? Register
             </Link>
