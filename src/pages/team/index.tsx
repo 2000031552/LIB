@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef , GridToolbar} from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataTeam } from "../../data/mockData";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
@@ -98,11 +98,15 @@ const Team: React.FC = () => {
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,
           },
+          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+            color: `${colors.greenAccent[200]} !important`,
+          },
         }}
       >
         <DataGrid
           rows={mockDataTeam}
           columns={columns}
+          slots={{ toolbar: GridToolbar }}
           pageSize={9}
           checkboxSelection
           disableSelectionOnClick
