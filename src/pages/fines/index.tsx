@@ -5,7 +5,7 @@ import { tokens } from "../../theme";
 import { mockDataInvoices } from "../../data/mockData";
 import Header from "../../components/Header";
 
-const Invoices: React.FC = () => {
+const Fines: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -76,4 +76,4 @@ const Invoices: React.FC = () => {
   );
 };
 
-export default Invoices;
+export default Fines;

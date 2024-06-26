@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar, GridColDef } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
-
+interface Book {
+  id: number;
+  ISBN: string;
+  name: string;
+  author: string;
+  genre: string;
+  borrowedcount: number;
+  overduecount: number;
+}
 const Bookstatus: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();    
-
+  const [books, setBooks] = useState<Book[]>([]);
+  useEffect(() => {
+    fetch('/api/books') // Replace with your API endpoint
+      .then(response => response.json())
+      .then(data => setBooks(data))
+      .catch(error => {
+        console.error('There was an error fetching the books!', error);
+      });
+  }, []);
+  
   const handleCellClick = (params: { field: string; id: string | number }) => {
     if (params.field === 'name') {
       navigate(`/bookdetails/${params.id}`);

@@ -23,7 +23,7 @@ const sampleData: Request[] = [
   { requestId: 10, userId: 110, bookTitle: 'The Brothers Karamazov', author: 'Fyodor Dostoevsky' },
 ];
 
-const FAQ: React.FC = () => {
+const BookRequests: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -71,4 +71,4 @@ const FAQ: React.FC = () => {
   );
 };
 
-export default FAQ;
+export default BookRequests;

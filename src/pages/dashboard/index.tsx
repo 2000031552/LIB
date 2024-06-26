@@ -30,11 +30,11 @@ const Dashboard: React.FC = () => {
   const navigate = useNavigate();
 
   const handleMembersClick = () => {
-    navigate("/team");
+    navigate("/members");
   };
 
   const handleBooksClick = () => {
-    navigate("/contacts");
+    navigate("/books");
   };
 
   const handleReportsClick = () => {

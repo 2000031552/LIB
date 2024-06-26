@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid, GridColDef , GridToolbar} from "@mui/x-data-grid";
 import { tokens } from "../../theme";
@@ -7,7 +7,7 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import SchoolIcon from "@mui/icons-material/School";
 import Header from "../../components/Header";
 
-const Team: React.FC = () => {
+const Members: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -17,7 +17,16 @@ const Team: React.FC = () => {
     email: string;
     access: string;
   }
+  const [members, setMembers] = useState<Member[]>([]);
 
+  useEffect(() => {
+    fetch('/api/members') // Replace with your API endpoint
+      .then(response => response.json())
+      .then(data => setMembers(data))
+      .catch(error => {
+        console.error('There was an error fetching the members!', error);
+      });
+  }, []);
   const columns: GridColDef[] = [
     { field: "id", headerName: "Id", flex: 1 },
     {
@@ -116,4 +125,4 @@ const Team: React.FC = () => {
   );
 };
 
-export default Team;
+export default Members;

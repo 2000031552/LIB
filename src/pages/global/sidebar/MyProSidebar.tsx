@@ -173,14 +173,14 @@ const MyProSidebar: React.FC = () => {
             </Typography>
             <Item
               title="Members"
-              to="/team"
+              to="/members"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Books"
-              to="/contacts"
+              to="/books"
               icon={<LibraryBooksIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -194,7 +194,7 @@ const MyProSidebar: React.FC = () => {
             />
             <Item
               title="Fines"
-              to="/invoices"
+              to="/fines"
               icon={<AttachMoneyIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -209,7 +209,7 @@ const MyProSidebar: React.FC = () => {
             </Typography>
             <Item
               title="New Admin"
-              to="/form"
+              to="/adminaddform"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -223,7 +223,7 @@ const MyProSidebar: React.FC = () => {
             />
             <Item
               title="Requests"
-              to="/faq"
+              to="/bookrequests"
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

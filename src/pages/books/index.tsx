@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar, GridColDef } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
-
-const Contacts: React.FC = () => {
+ 
+interface Book {
+  id: number;
+  ISBN: string;
+  name: string;
+  author: string;
+  genre: string;
+  publisheddate: string;
+  available: number;
+}
+const Books: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [books, setBooks] = useState<Book[]>([]);
 
+  useEffect(() => {
+    fetch('/api/books') // Replace with your API endpoint
+      .then(response => response.json())
+      .then(data => setBooks(data))
+      .catch(error => {
+        console.error('There was an error fetching the books!', error);
+      });
+  }, []);
   const columns: GridColDef[] = [
     { field: "id", headerName: "Id", width: 100 },
     { field: "ISBN", headerName: "ISBN", width: 150 },
@@ -97,4 +115,4 @@ const Contacts: React.FC = () => {
   );
 };
 
-export default Contacts;
+export default Books;
