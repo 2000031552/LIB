@@ -208,7 +208,7 @@ const MyProSidebar: React.FC = () => {
               Pages
             </Typography>
             <Item
-              title="Profile Form"
+              title="New Admin"
               to="/form"
               icon={<PersonOutlinedIcon />}
               selected={selected}

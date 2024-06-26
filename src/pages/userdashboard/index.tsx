@@ -102,8 +102,8 @@ const UserDashboard: React.FC = () => {
             sx={{ width: '100%', height: '100%' }}
           >
             <StatBox
-              title="1,325,134"
-              subtitle="Amount to be collected"
+              title="1,134"
+              subtitle="Amount to be paid"
               icon={<RequestQuoteOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
               progress={0.60}
               increase={'60%'}

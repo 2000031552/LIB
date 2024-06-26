@@ -180,7 +180,7 @@ const UserSidebar: React.FC = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Books History"
+              title="Borrowal History"
               to="/userbookhistory"
               icon={<MenuBookIcon />}
               selected={selected}
@@ -216,8 +216,8 @@ const UserSidebar: React.FC = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Requests"
-              to="/faq"
+              title="All Requests"
+              to="/userallrequests"
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, useTheme,  Table, TableHead, TableRow, TableCell, TableBody  } from '@mui/material';
 import Header from '../../components/Header';
 import { tokens } from '../../theme';
@@ -98,7 +98,24 @@ const sampleData: BorrowedBook[] = [
 const UserBorrowHistory: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [borrowedBooks, setBorrowedBooks] = useState<BorrowedBook[]>([]);
 
+  useEffect(() => {
+    fetch('/api/borrowed-books') // Replace with your API endpoint
+      .then(response => response.json())
+      .then(data => {
+        // Convert date strings to Date objects
+        const formattedData = data.map((book: any) => ({
+          ...book,
+          borrowedDate: new Date(book.borrowedDate),
+          returnDate: new Date(book.returnDate),
+        }));
+        setBorrowedBooks(formattedData);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the borrowed books!', error);
+      });
+  }, []);
 
 
   return (
