@@ -44,9 +44,9 @@ const Members: React.FC = () => {
         const { access } = params.row as Member;
         return (
           <Box
-            width="100%"
-            m="0 auto"
-            p="11px"
+            maxWidth="60%"
+            m="4px auto"
+            p="8px"
             display="flex"
             justifyContent="center"
             //alignItems="center"
