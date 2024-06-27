@@ -1,46 +1,54 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, useTheme } from "@mui/material";
+import { Box, Button, IconButton, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar, GridColDef } from "@mui/x-data-grid";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
- 
+
 interface Book {
   id: number;
   ISBN: string;
   name: string;
   author: string;
-  genre: string;
+  genre: string;  
   publisheddate: string;
   available: number;
 }
+
 const Books: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [books, setBooks] = useState<Book[]>([]);
+  const [books, setBooks] = useState<Book[]>(mockDataContacts);
 
-  useEffect(() => {
-    fetch('/api/books') // Replace with your API endpoint
-      .then(response => response.json())
-      .then(data => setBooks(data))
-      .catch(error => {
-        console.error('There was an error fetching the books!', error);
-      });
-  }, []);
+  const handleDelete = (id: number) => {
+    setBooks(books.filter(book => book.id !== id));
+  };
+
   const columns: GridColDef[] = [
-    { field: "id", headerName: "Id", width: 100 },
-    { field: "ISBN", headerName: "ISBN", width: 150 },
+    { field: "id", headerName: "Id",  },
+    { field: "ISBN", headerName: "ISBN", flex: 1, },
     {
       field: "name",
       headerName: "BookTitle",
       cellClassName: "name-column--cell",
-      width: 200,
+      flex: 1.5,
     },
-    { field: "author", headerName: "Author", width: 200 },
-    { field: "genre", headerName: "Genre", width: 150 },
-    { field: "publisheddate", headerName: "PublishedDate", width: 150 },
-    { field: "available", headerName: "Available copies", width: 150 },
+    { field: "author", headerName: "Author", flex: 1,},
+    { field: "genre", headerName: "Genre", flex: 1, },
+    { field: "publisheddate", headerName: "PublishedDate", flex: 1, },
+    { field: "available", headerName: "Available copies", flex: 1, },
+    {
+      field: "actions",
+      headerName: "Actions",
+      flex: 1,
+      renderCell: (params) => (
+        <IconButton onClick={() => handleDelete(params.row.id)}>
+          <DeleteIcon color="secondary" />
+        </IconButton>
+      ),
+    },
   ];
 
   const navigate = useNavigate();
@@ -56,8 +64,8 @@ const Books: React.FC = () => {
   };
 
   return (
-    <Box m="16px">
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+    <Box m="20px">
+    <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="Books" subtitle="Total Books Data" />
         <Button
           variant="contained"
@@ -68,51 +76,57 @@ const Books: React.FC = () => {
         >
           Add Book
         </Button>
-      </Box>
-      <Box
-        m="8px 0 0 0"
-        width="100%"
-        height="80vh"
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "none",
-          },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "none",
-          },
-          "& .name-column--cell": {
-            color: colors.greenAccent[300],
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: `${colors.blueAccent[700]} !important`, // Ensure high specificity
-
-            borderBottom: "none",
-            color: colors.grey[100], // Ensure the header text is visible
-          },
-          "& .MuiDataGrid-virtualScroller": {
-            backgroundColor: colors.primary[400],
-          },
-          "& .MuiDataGrid-footerContainer": {
-            borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
-          },
-          "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
-          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
-        }}
-      >
-        <DataGrid
-          rows={mockDataContacts}
+    </Box>
+    <Box
+      mt="2px"
+      p="20px"
+      height="75vh"
+      bgcolor={colors.primary[400]}
+      borderRadius="8px"
+      sx={{
+        "& .MuiDataGrid-root": {
+          border: "none",
+        },
+        "& .MuiDataGrid-cell": {
+          borderBottom: "none",
+        },
+        "& .name-column--cell": {
+          color: colors.greenAccent[300],
+        },
+        "& .MuiDataGrid-columnHeaders": {
+          backgroundColor: `${colors.blueAccent[700]} !important`,
+          borderBottom: "none",
+        },
+        "& .MuiDataGrid-columnHeader": {
+          backgroundColor: `${colors.blueAccent[700]} !important`,
+        },
+        "& .MuiDataGrid-columnHeaderTitle": {
+          color: `${colors.grey[100]} !important`,
+        },
+        "& .MuiDataGrid-virtualScroller": {
+          backgroundColor: colors.primary[400],
+        },
+        "& .MuiDataGrid-footerContainer": {
+          borderTop: "none",
+          backgroundColor: `${colors.blueAccent[700]} !important`,
+        },
+        "& .MuiCheckbox-root": {
+          color: `${colors.greenAccent[200]} !important`,
+        },
+        "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
+          color: `${colors.greenAccent[200]} !important`,
+        },
+      }}
+    >
+     <DataGrid
+          rows={books}
           columns={columns}
           slots={{ toolbar: GridToolbar }}
           onCellClick={handleCellClick}
-        />
-      </Box>
+      />
     </Box>
-  );
+  </Box>
+);
 };
 
 export default Books;

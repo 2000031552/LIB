@@ -11,7 +11,7 @@ interface Book {
   name: string;
   author: string;
   genre: string;
-  borrowedcount: number;
+  borrowedcount: number;  
   overduecount: number;
 }
 const Bookstatus: React.FC = () => {
@@ -35,24 +35,24 @@ const Bookstatus: React.FC = () => {
   };
 
   const columns: GridColDef[] = [
-    { field: "id", headerName: "Id", width: 100 },
-    { field: "ISBN", headerName: "ISBN", width: 150 },
-    { field: "name", headerName: "BookTitle", cellClassName: "name-column--cell", width: 200 },
-    { field: "author", headerName: "Author", width: 200 },
-    { field: "genre", headerName: "Genre", width: 150 },
-    { field: "borrowedcount", headerName: "Borrowedcount", width: 150 },
-    { field: "overduecount", headerName: "Overduecount", width: 150 }
+    { field: "id", headerName: "Id", },
+    { field: "ISBN", headerName: "ISBN", flex: 1, },
+    { field: "name", headerName: "BookTitle", cellClassName: "name-column--cell", flex: 2, },
+    { field: "author", headerName: "Author", flex: 1, },
+    { field: "genre", headerName: "Genre", flex: 1, },
+    { field: "borrowedcount", headerName: "Borrowedcount", flex: 1, },
+    { field: "overduecount", headerName: "Overduecount", flex: 1, }
   ];
 
   return (
-    <Box m="16px">
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Status" subtitle={''}  />
-      </Box>
+     <Box m="20px">
+      <Header title="Status" subtitle="Book Status" />
       <Box
-        m="8px 0 0 0"
-        width="100%"
-        height="80vh"
+        mt="18px"
+        p="20px"
+        height="75vh"
+        bgcolor={colors.primary[400]}
+        borderRadius="8px"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
@@ -64,25 +64,31 @@ const Bookstatus: React.FC = () => {
             color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700],
+            backgroundColor: `${colors.blueAccent[700]} !important`,
             borderBottom: "none",
+          },
+          "& .MuiDataGrid-columnHeader": {
+            backgroundColor: `${colors.blueAccent[700]} !important`,
+          },
+          "& .MuiDataGrid-columnHeaderTitle": {
+            color: `${colors.grey[100]} !important`,
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: colors.primary[400],
           },
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
+            backgroundColor: `${colors.blueAccent[700]} !important`,
           },
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            color: `${colors.grey[100]} !important`,
+            color: `${colors.greenAccent[200]} !important`,
           },
         }}
       >
-        <DataGrid
+       <DataGrid
           rows={mockDataContacts}
           columns={columns}
           slots={{ toolbar: GridToolbar }}
@@ -92,5 +98,6 @@ const Bookstatus: React.FC = () => {
     </Box>
   );
 };
+
 
 export default Bookstatus;
