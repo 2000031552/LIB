@@ -10,34 +10,35 @@ const Fines: React.FC = () => {
   const colors = tokens(theme.palette.mode);
 
   const columns: GridColDef[] = [
-    { field: "id", headerName: "Id" },
+    { field: "id", headerName: "Id" }, 
     {
       field: "name",
       headerName: "Name",
-      width: 200,
+      flex: 1,
       cellClassName: "name-column--cell",
     },
-    { field: "email", headerName: "Email", width: 300 },
-    { field: "phone", headerName: "Phone Number", width: 200 },
+    { field: "email", headerName: "Email", flex: 1},
+    { field: "phone", headerName: "Phone Number", flex: 1 },
     {
       field: "finedue",
       headerName: "Fine Due",
-      width: 150,
+      flex: 1,
       renderCell: (params) => {
         return <Typography color={colors.greenAccent[400]}>₹{params.row.cost}</Typography>;
       },
     },
-    { field: "date", headerName: "Expected Returndate", width: 150 },
+    { field: "date", headerName: "Expected Returndate", flex: 1 },
   ];
 
   return (
-    <Box m="15px">
-      <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Header title="Fine Due" subtitle="Total Fine Data" />
-      </Box>
+    <Box m="20px">
+      <Header title="Fine Due" subtitle="Total Fine Data" />
       <Box
-        m="8px 0 0 0"
-        height="80vh"
+        mt="18px"
+        p="20px"
+        height="75vh"
+        bgcolor={colors.primary[400]}
+        borderRadius="8px"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
@@ -49,20 +50,23 @@ const Fines: React.FC = () => {
             color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700],
+            backgroundColor: `${colors.blueAccent[700]} !important`,
             borderBottom: "none",
+          },
+          "& .MuiDataGrid-columnHeader": {
+            backgroundColor: `${colors.blueAccent[700]} !important`,
+          },
+          "& .MuiDataGrid-columnHeaderTitle": {
+            color: `${colors.grey[100]} !important`,
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: colors.primary[400],
           },
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
+            backgroundColor: `${colors.blueAccent[700]} !important`,
           },
           "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
-          },
-          "& .MuiChackbox-root": {
             color: `${colors.greenAccent[200]} !important`,
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
@@ -70,7 +74,7 @@ const Fines: React.FC = () => {
           },
         }}
       >
-        <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} slots={{ toolbar: GridToolbar }}/>
+       <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} slots={{ toolbar: GridToolbar }}/>
       </Box>
     </Box>
   );
