@@ -10,6 +10,7 @@ interface BorrowedBook {
   borrowedDate: Date;
   returnDate: Date;
   fine: number;
+  status: string; // Added status field
 }
 
 const sampleData: BorrowedBook[] = [
@@ -19,7 +20,8 @@ const sampleData: BorrowedBook[] = [
     bookTitle: 'The Great Gatsby',
     borrowedDate: new Date('2022-01-01'),
     returnDate: new Date('2022-01-15'),
-    fine: 20
+    fine: 20,
+    status: 'Borrowed', // Added status value
   },
   {
     borrowedId: 2,
@@ -27,7 +29,8 @@ const sampleData: BorrowedBook[] = [
     bookTitle: '1984',
     borrowedDate: new Date('2022-02-01'),
     returnDate: new Date('2022-02-15'),
-    fine: 30
+    fine: 30,
+    status: 'Returned', // Added status value
   },
   {
     borrowedId: 3,
@@ -35,7 +38,8 @@ const sampleData: BorrowedBook[] = [
     bookTitle: 'To Kill a Mockingbird',
     borrowedDate: new Date('2022-03-01'),
     returnDate: new Date('2022-03-15'),
-    fine: 0
+    fine: 0,
+    status: 'Returned', // Added status value
   },
   {
     borrowedId: 4,
@@ -43,7 +47,8 @@ const sampleData: BorrowedBook[] = [
     bookTitle: 'Pride and Prejudice',
     borrowedDate: new Date('2022-04-01'),
     returnDate: new Date('2022-04-15'),
-    fine: 0
+    fine: 0,
+    status: 'Borrowed', // Added status value
   },
   {
     borrowedId: 5,
@@ -51,7 +56,8 @@ const sampleData: BorrowedBook[] = [
     bookTitle: 'The Catcher in the Rye',
     borrowedDate: new Date('2022-05-01'),
     returnDate: new Date('2022-05-15'),
-    fine: 0
+    fine: 0,
+    status: 'Returned', // Added status value
   },
   {
     borrowedId: 6,
@@ -59,7 +65,8 @@ const sampleData: BorrowedBook[] = [
     bookTitle: 'Moby-Dick',
     borrowedDate: new Date('2022-06-01'),
     returnDate: new Date('2022-06-15'),
-    fine: 0
+    fine: 0,
+    status: 'Returned', // Added status value
   },
   {
     borrowedId: 7,
@@ -67,7 +74,8 @@ const sampleData: BorrowedBook[] = [
     bookTitle: 'War and Peace',
     borrowedDate: new Date('2022-07-01'),
     returnDate: new Date('2022-07-15'),
-    fine: 0
+    fine: 0,
+    status: 'Borrowed', // Added status value
   },
   {
     borrowedId: 8,
@@ -75,7 +83,8 @@ const sampleData: BorrowedBook[] = [
     bookTitle: 'The Odyssey',
     borrowedDate: new Date('2022-08-01'),
     returnDate: new Date('2022-08-15'),
-    fine: 0
+    fine: 0,
+    status: 'Borrowed', // Added status value
   },
   {
     borrowedId: 9,
@@ -83,7 +92,8 @@ const sampleData: BorrowedBook[] = [
     bookTitle: 'Crime and Punishment',
     borrowedDate: new Date('2022-09-01'),
     returnDate: new Date('2022-09-15'),
-    fine: 0
+    fine: 0,
+    status: 'Returned', // Added status value
   },
   {
     borrowedId: 10,
@@ -91,7 +101,8 @@ const sampleData: BorrowedBook[] = [
     bookTitle: 'The Brothers Karamazov',
     borrowedDate: new Date('2022-10-01'),
     returnDate: new Date('2022-10-15'),
-    fine: 0
+    fine: 0,
+    status: 'Borrowed', // Added status value
   },
 ];
 
@@ -131,6 +142,7 @@ const UserBorrowHistory: React.FC = () => {
               <TableCell style={{ color: colors.grey[100] }}>Borrowed Date</TableCell>
               <TableCell style={{ color: colors.grey[100] }}>Return Date</TableCell>
               <TableCell style={{ color: colors.grey[100] }}>Fine</TableCell>
+              <TableCell style={{ color: colors.grey[100] }}>Status</TableCell> {/* Added Status column */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -142,6 +154,7 @@ const UserBorrowHistory: React.FC = () => {
                 <TableCell>{borrowedBook.borrowedDate.toDateString()}</TableCell>
                 <TableCell>{borrowedBook.returnDate.toDateString()}</TableCell>
                 <TableCell>₹{borrowedBook.fine}</TableCell>
+                <TableCell>{borrowedBook.status}</TableCell> {/* Added Status field */}
               </TableRow>
             ))}
           </TableBody>

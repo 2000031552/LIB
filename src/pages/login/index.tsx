@@ -16,7 +16,7 @@ import {
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { grey } from '@mui/material/colors';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
   userId: Yup.string()
@@ -31,7 +31,7 @@ interface LoginProps {
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -53,6 +53,34 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         }
       }, 1000);
     },
+    // onSubmit: async (values) => {
+    //   try {
+    //     const response = await fetch('https://your-api-endpoint/login', {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify(values),
+    //     });
+
+    //     const data = await response.json();
+
+    //     if (response.ok) {
+    //       if (data.role === 'admin') {
+    //         navigate('/dashboard');
+    //       } else if (data.role === 'user') {
+    //         navigate('/user-dashboard');
+    //       }
+    //     } else {
+    //       alert(data.message || 'Invalid credentials');
+    //       navigate('/login');
+    //     }
+    //   } catch (error) {
+    //     console.error('Error:', error);
+    //     alert('Something went wrong. Please try again later.');
+    //     navigate('/login');
+    //   }
+    // },
   });
 
   const togglePasswordVisibility = () => {
@@ -62,7 +90,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   return (
     <Box
       sx={{
-        backgroundColor: '#61dafbaa',
+        backgroundColor: '#1F2A40',
         minHeight: '98vh',
         display: 'flex',
         justifyContent: 'center',
@@ -73,7 +101,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       <Container maxWidth="sm">
         <Paper
           elevation={3}
-          sx={{ padding: 6, width: '100%', borderRadius: 4, backgroundColor: '#f0f8ff' }}
+          sx={{ padding: 6, width: '100%', borderRadius: 4, backgroundColor: '#dbf5ee' }}// #f0f8ff
         >
           <Box
             sx={{

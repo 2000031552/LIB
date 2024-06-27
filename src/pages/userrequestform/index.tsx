@@ -6,7 +6,7 @@ import { Formik } from 'formik';
 interface Requestdata{
     bookTitle : string;
     author : string;
-    gener : string;
+    genre : string;
 }
 
 const Userequestform = () => {
@@ -16,7 +16,7 @@ const Userequestform = () => {
     const initialValues: Requestdata = {
         bookTitle: '',
         author: '',
-        gener: ''
+        genre: ''
     };
     const handleFormSubmit = (values: Requestdata) => {
         console.log(values);
@@ -73,13 +73,13 @@ const Userequestform = () => {
                                 fullWidth
                                 variant="filled"
                                 type="text"
-                                label="Gener"
+                                label="Genre"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                value={values.gener}
-                                name="gener"
-                                error={!!touched.gener && !!errors.gener}
-                                helperText={touched.gener && errors.gener}
+                                value={values.genre}
+                                name="genre"
+                                error={!!touched.genre && !!errors.genre}
+                                helperText={touched.genre && errors.genre}
                                 sx={{ gridColumn: 'span 2' }}
                             />
                         </Box>
