@@ -1,7 +1,7 @@
 import React from "react";
 import { tokens } from "../theme";
 import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
-import { useTheme, Typography } from '@mui/material';
+import { useTheme } from '@mui/material';
 import { mockDataTeam } from "../data/mockData";
 import Box from "@mui/material/Box";
 
@@ -69,10 +69,11 @@ const NeverBorrowedBooks: React.FC = () => {
         <DataGrid
           rows={mockDataTeam}
           columns={columns}
-          pageSize={9}
-          slots={{ toolbar: GridToolbar }}
+          paginationModel={{ page: 0, pageSize: 9 }}
           checkboxSelection
-          disableSelectionOnClick
+          disableRowSelectionOnClick
+          slots={{ toolbar: GridToolbar }}
+          
         />
       </Box>
       );

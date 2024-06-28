@@ -27,17 +27,22 @@ const RecentlyAddedBooks: React.FC<RecentlyAddedBooksProps> = ({ isDashboard = f
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  return (      
+  return (
     <Grid item xs={12}>
-      <Box bgcolor={colors.primary[400]} borderRadius="12px" overflow="hidden" padding="16px" > 
+      <Box
+        bgcolor={colors.primary[400]}
+        borderRadius="12px"
+        overflow="hidden"
+        padding="16px"
+        style={{ boxShadow: isDashboard ? '0 4px 8px rgba(0, 0, 0, 0.1)' : 'none' }}
+      >
         <Box
           mt="8px"
-          //p="0 30px"
           display="flex"
           justifyContent="space-between"
           alignItems="start"
         >
-          <Typography  
+          <Typography
             variant="h5"
             fontWeight="600"
             color={colors.greenAccent[500]}

@@ -1,6 +1,6 @@
-import { SetStateAction, useState } from "react";
-import FullCalendar from "@fullcalendar/react";
-import { formatDate } from "@fullcalendar/core";
+import { useState } from "react";
+import FullCalendar  from "@fullcalendar/react";
+import { formatDate, EventApi, EventClickArg ,DateSelectArg } from "@fullcalendar/core";
 import Grid from "@mui/material/Unstable_Grid2";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -20,16 +20,16 @@ import { tokens } from "../../theme";
 const Calendar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [currentEvents, setCurrentEvents] = useState([]);
+  const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
 
-  const handleDateClick = (selected: { view: { calendar: unknown }; dateStr: unknown; startStr: unknown; endStr: unknown; allDay: unknown }) => {
+  const handleDateClick = (selected: DateSelectArg) => {
     const title = prompt("Please enter a new title for your event");
     const calendarApi = selected.view.calendar;
     calendarApi.unselect();
 
     if (title) {
       calendarApi.addEvent({
-        id: `${selected.dateStr}-${title}`,
+        id: `${selected.startStr}-${title}`,
         title,
         start: selected.startStr,
         end: selected.endStr,
@@ -38,7 +38,7 @@ const Calendar = () => {
     }
   };
 
-  const handleEventClick = (selected: { event: { title: unknown; remove: () => void } }) => {
+  const handleEventClick = (selected: EventClickArg) => {
     if (
       window.confirm(
         `Are you sure you want to delete the event '${selected.event.title}'`
@@ -73,7 +73,7 @@ const Calendar = () => {
                     primary={event.title}
                     secondary={
                       <Typography>
-                        {formatDate(event.start, {
+                        {formatDate(event.start!, {
                           year: "numeric",
                           month: "short",
                           day: "numeric",
@@ -108,7 +108,7 @@ const Calendar = () => {
               dayMaxEvents={true}
               select={handleDateClick}
               eventClick={handleEventClick}
-              eventsSet={(events: SetStateAction<never[]>) => setCurrentEvents(events)}
+              eventsSet={(events: EventApi[]) => setCurrentEvents(events)}
               initialEvents={[
                 {
                   id: "12315",

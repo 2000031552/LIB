@@ -50,11 +50,11 @@ const App: React.FC = () => {
     navigate(userRole === 'admin' ? '/dashboard' : '/user-dashboard');
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('role');
-    setIsAdmin(false);
-    navigate('/login');
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem('role');
+  //   setIsAdmin(false);
+  //   navigate('/login');
+  // };
 
   // Check if the current location is '/login' or if loading is still in progress
   const isLoginPage = location.pathname === '/login' || isLoading;

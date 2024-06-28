@@ -83,7 +83,7 @@ export const mockDataContacts = [
     author : "J K Rowling",
     publisheddate : "03/12/2022",
     genre:"Lifestyle",
-    ISBN: 123512,
+    ISBN: "123512",
     description:'The Harry Potter series is a seven-book fantasy saga written by J.K. Rowling. It follows the life and adventures of a young wizard, Harry Potter, who discovers on his eleventh birthday that he is the orphaned son of two powerful wizards and possesses unique magical powers. He is invited to attend Hogwarts School of Witchcraft and Wizardry, where he befriends Hermione Granger and Ron Weasley. Together, they uncover the truth about Harrys past and the dark forces threatening the wizarding world.',
     borrowedcount:20,
     overduecount:5,
@@ -96,7 +96,7 @@ export const mockDataContacts = [
     author: "J.R.R. Tolkien",
     publisheddate: "07/29/1954",
     genre: "Fantasy",
-    ISBN: 9780261102217
+    ISBN: "9780261102217"
   },
   {
     id: 3,
@@ -104,7 +104,7 @@ export const mockDataContacts = [
     author: "J.K. Rowling",
     publisheddate: "06/26/1997",
     genre: "Fantasy",
-    ISBN: 9780747532743
+    ISBN: "9780747532743"
   },
   {
     id: 4,
@@ -112,7 +112,7 @@ export const mockDataContacts = [
     author: "J.K. Rowling",
     publisheddate: "07/08/1999",
     genre: "Fantasy",
-    ISBN: 9780747546290
+    ISBN: "9780747546290"
   },
   {
     id: 5,
@@ -120,7 +120,7 @@ export const mockDataContacts = [
     author: "Suzanne Collins",
     publisheddate: "09/14/2008",
     genre: "Dystopian",
-    ISBN: 9780439023481
+    ISBN: "9780439023481"
   },
   {
     id: 6,
@@ -128,7 +128,7 @@ export const mockDataContacts = [
     author: "Suzanne Collins",
     publisheddate: "09/01/2009",
     genre: "Dystopian",
-    ISBN: 9780439023498
+    ISBN: "9780439023498"
   },
   {
     id: 7,
@@ -136,7 +136,7 @@ export const mockDataContacts = [
     author: "George R.R. Martin",
     publisheddate: "08/06/1996",
     genre: "Fantasy",
-    ISBN: 9780553103540
+    ISBN: "9780553103540"
   },
   {
     id: 8,
@@ -144,7 +144,7 @@ export const mockDataContacts = [
     author: "George R.R. Martin",
     publisheddate: "11/16/1998",
     genre: "Fantasy",
-    ISBN: 9780553579901
+    ISBN: "9780553579901"
   },
   {
     id: 9,
@@ -152,7 +152,7 @@ export const mockDataContacts = [
     author: "J.R.R. Tolkien",
     publisheddate: "10/20/1955",
     genre: "Fantasy",
-    ISBN: 9780618002255
+    ISBN: "9780618002255"
   },
   {
     id: 10,
@@ -160,7 +160,7 @@ export const mockDataContacts = [
     author: "J.R.R. Tolkien",
     publisheddate: "11/02/1955",
     genre: "Fantasy",
-    ISBN: 9780618002231
+    ISBN: "9780618002231"
   },
   {
     id: 11,
@@ -168,7 +168,7 @@ export const mockDataContacts = [
     author: "J.R.R. Tolkien",
     publisheddate: "10/20/1955",
     genre: "Fantasy",
-    ISBN: 9780618002248
+    ISBN: "9780618002248"
   },
   {
     id: 12,
@@ -176,7 +176,7 @@ export const mockDataContacts = [
     author: "Stephenie Meyer",
     publisheddate: "10/05/2005",
     genre: "Romance",
-    ISBN: 9780316015844
+    ISBN: "9780316015844"
   },
   {
     id: 13,
@@ -184,7 +184,7 @@ export const mockDataContacts = [
     author: "Stephenie Meyer",
     publisheddate: "09/06/2006",
     genre: "Romance",
-    ISBN: 9780316015845
+    ISBN: "9780316015845"
   },
   {
     id: 14,
@@ -192,7 +192,7 @@ export const mockDataContacts = [
     author: "Stephenie Meyer",
     publisheddate: "08/02/2007",
     genre: "Romance",
-    ISBN: 9780316015846
+    ISBN: "9780316015846"
   },
   {
     id: 15,
@@ -200,7 +200,7 @@ export const mockDataContacts = [
     author: "Jim Butcher",
     publisheddate: "04/01/2000",
     genre: "Urban Fantasy",
-    ISBN: 9780451457813
+    ISBN: "9780451457813"
   },
   {
     id: 16,
@@ -208,7 +208,7 @@ export const mockDataContacts = [
     author: "Jim Butcher",
     publisheddate: "12/01/2004",
     genre: "Urban Fantasy",
-    ISBN: 9780451457814
+    ISBN: "9780451457814"
   },
   {
     id: 17,
@@ -216,7 +216,7 @@ export const mockDataContacts = [
     author: "Jim Butcher",
     publisheddate: "04/04/2006",
     genre: "Urban Fantasy",
-    ISBN: 9780451457815
+    ISBN: "9780451457815"
   },
   {
     id: 18,
@@ -224,7 +224,7 @@ export const mockDataContacts = [
     author: "Rick Riordan",
     publisheddate: "06/28/2005",
     genre: "Fantasy",
-    ISBN: 9780786856299
+    ISBN: "9780786856299"
   },
   {
     id: 19,
@@ -232,7 +232,7 @@ export const mockDataContacts = [
     author: "Rick Riordan",
     publisheddate: "06/03/2008",
     genre: "Fantasy",
-    ISBN: 9781423103349
+    ISBN: "9781423103349"
   },
   {
     id: 20,
@@ -240,7 +240,7 @@ export const mockDataContacts = [
     author: "Rick Riordan",
     publisheddate: "05/05/2009",
     genre: "Fantasy",
-    ISBN: 9781423101475
+    ISBN: "9781423101475"
   },
   {
     id: 21,
@@ -248,7 +248,7 @@ export const mockDataContacts = [
     author: "Rick Riordan",
     publisheddate: "09/24/2010",
     genre: "Fantasy",
-    ISBN: 9781423113492
+    ISBN: "9781423113492"
   }
 
 ];

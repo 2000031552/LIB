@@ -1,7 +1,7 @@
 import React from "react";
 import { tokens } from "../theme";
 import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
-import { useTheme, Typography } from '@mui/material';
+import { useTheme } from '@mui/material';
 import { mockDataTeam } from "../data/mockData";
 import Box from "@mui/material/Box";
 
@@ -72,9 +72,9 @@ const MostBorrowedBook: React.FC = () => {
           rows={mockDataTeam}
           columns={columns}
           slots={{ toolbar: GridToolbar }}
-          pageSize={9}
+          paginationModel={{ page: 0, pageSize: 9 }}
           checkboxSelection
-          disableSelectionOnClick
+          disableRowSelectionOnClick
         />
       </Box>
       );
