@@ -15,6 +15,7 @@ import Bookstatus from "./pages/bookstatus";
 import EachBookDetails from "./pages/eachbook";
 import Reports from './pages/reports';
 import Login from './pages/login';
+import BorrowalDetails from "./pages/eachmemborrowaldetails";
 //import Signup from './pages/signup';
  
 const adminRoutes: RouteObject[] = [
@@ -23,6 +24,7 @@ const adminRoutes: RouteObject[] = [
   { path: "/profile", element: <Profile /> },
   { path: "/change-password", element: <ChangePassword /> },
   { path: "/members", element: <Members /> },
+  { path: "/members/:memberId" ,element:<BorrowalDetails />} ,
   { path: "/books", element: <Books /> },
   { path: "/eachbook/:id", element: <EachBookDetails /> },
   { path: "/addbook", element: <AddBook /> },

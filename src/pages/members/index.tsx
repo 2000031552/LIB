@@ -6,11 +6,11 @@ import { mockDataTeam } from "../../data/mockData";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import SchoolIcon from "@mui/icons-material/School";
 import Header from "../../components/Header";
-
+import { useNavigate } from 'react-router-dom';
 const Members: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
+  const navigate = useNavigate();
   interface Member {
     id: number;   
     name: string;
@@ -34,6 +34,14 @@ const Members: React.FC = () => {
       headerName: "Name",
       flex: 2,
       cellClassName: "name-column--cell",
+      renderCell: (params) => (
+        <Typography
+          sx={{ cursor: 'pointer' }}
+          onClick={() => navigate(`/members/${params.row.id}`)}
+        >
+          {params.value}
+        </Typography>
+      ),
     },
     { field: "email", headerName: "Email", flex: 3 },
     {
