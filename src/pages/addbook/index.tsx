@@ -3,10 +3,13 @@ import { Box, Button, TextField } from '@mui/material';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useMediaQuery } from '@mui/material';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Header from '../../components/Header';
+
 const isbnRegex = /^[0-9]{10}$/;
 const AddBook: React.FC = () => {
   const isNonMobile = useMediaQuery('(min-width:600px)');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleFormSubmit = (values: unknown) => {
     console.log(values);
@@ -41,7 +44,7 @@ const AddBook: React.FC = () => {
         initialValues={initialValues}
         validationSchema={checkoutSchema}
       >
-        {({ values,   handleBlur, handleChange, handleSubmit }) => (
+        {({ values, handleBlur, handleChange, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Box
               display="grid"
@@ -130,8 +133,11 @@ const AddBook: React.FC = () => {
               />
             </Box>
             <Box display="flex" justifyContent="center" mt="20px">
-              <Button type="submit" color="secondary" variant="contained">
+              <Button type="submit" color="secondary" variant="contained" sx={{ marginRight: '10px' }}>
                 Add Book
+              </Button>
+              <Button type="button" color="secondary" variant="outlined" onClick={() => navigate(-1)}>
+                Back
               </Button>
             </Box>
           </form>

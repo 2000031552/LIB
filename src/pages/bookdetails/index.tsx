@@ -1,9 +1,10 @@
 import React from 'react';
-import { Box, useTheme } from '@mui/material';
+import { Box, Button, useTheme } from '@mui/material';
 import { DataGrid, GridToolbar, GridColDef } from '@mui/x-data-grid';
 import { tokens } from '../../theme';
 import { mockDataBookdetails } from '../../data/mockData';
 import Header from '../../components/Header';
+import { useNavigate } from 'react-router-dom';
 
 const BookDetails: React.FC = () => {
   const theme = useTheme();
@@ -19,10 +20,16 @@ const BookDetails: React.FC = () => {
     { field: 'returndate', headerName: 'Return Date', flex: 0.5},
     { field: 'status', headerName: 'Status', flex: 0.5},
   ];
+  const navigate = useNavigate();
 
   return (
     <Box m="20px">
     <Header title="Status" subtitle="" />
+     <Box>
+        <Button type="button" color="secondary" variant="outlined" onClick={() => navigate(-1)}>
+          Back
+        </Button>
+      </Box>
     <Box
       mt="18px"
       p="20px"
