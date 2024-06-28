@@ -48,7 +48,7 @@ const UserBooks: React.FC = () => {
     const navigate = useNavigate();
     const handleCellClick = (params: { field: string; id: string | number }) => {
         if (params.field === 'name') {
-            navigate(`/eachbook/${params.id}`);
+            navigate(`/usereachbook/${params.id}`);
         }
     };
 

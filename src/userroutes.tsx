@@ -7,7 +7,6 @@ import UserBooks from './pages/userbooks';
 import Form from "./pages/adminaddform";
 import Calendar from "./pages/calendar";
 import Login from './pages/login';
-import EachBookDetails from "./pages/eachbook";
 import BookDetails from "./pages/bookdetails";
  
 import UserBorrowHistory from "./pages/userbookhistory";
@@ -15,6 +14,7 @@ import Userequestform from "./pages/userrequestform";
 import UserAllRequests from "./pages/userallrequests";
 import ChangePassword from "./pages/changePassword";
 import Profile from "./pages/profile";
+import UserEachBook from "./pages/usereachbook";
 //import Signup from "./pages/signup";
 const userRoutes: RouteObject[] = [
   { path: "/change-password", element: <ChangePassword /> },
@@ -26,7 +26,7 @@ const userRoutes: RouteObject[] = [
   { path: "/form", element: <Form /> },
   { path: "/calendar", element: <Calendar /> },
   { path: "/userallrequests", element: <UserAllRequests /> },
-  { path: "/eachbook/:id", element: <EachBookDetails /> },
+  { path: "/usereachbook/:id", element: <UserEachBook /> },
   { path: "/bookdetails/:id", element: <BookDetails /> },
   // Define other user routes
   { path: "/login", element: <Login onLogin={() => {}} /> },

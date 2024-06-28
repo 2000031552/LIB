@@ -187,7 +187,7 @@ const UserSidebar: React.FC = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Borrowal Request"
+              title="New Book Request"
               to="/userrequestform"
               icon={<AttachMoneyIcon />}
               selected={selected}

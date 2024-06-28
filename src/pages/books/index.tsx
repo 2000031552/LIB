@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Button, IconButton, useTheme } from "@mui/material";
 import { DataGrid, GridToolbar, GridColDef } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import { tokens } from "../../theme";
 import { mockDataContacts } from "../../data/mockData";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +26,11 @@ const Books: React.FC = () => {
   const handleDelete = (id: number) => {
     setBooks(books.filter(book => book.id !== id));
   };
+  const navigate = useNavigate();
 
+  const handleEdit = (id: number) => {
+    navigate(`/editbook/${id}`);
+  };
   const columns: GridColDef[] = [
     { field: "id", headerName: "Id",  },
     { field: "ISBN", headerName: "ISBN", flex: 1, },
@@ -44,14 +49,19 @@ const Books: React.FC = () => {
       headerName: "Actions",
       flex: 1,
       renderCell: (params) => (
+        <Box> 
+        <IconButton onClick={() => handleEdit(params.row.id)}>
+            <EditIcon color="secondary" />
+          </IconButton>
         <IconButton onClick={() => handleDelete(params.row.id)}>
           <DeleteIcon color="secondary" />
         </IconButton>
+        </Box>
       ),
     },
   ];
 
-  const navigate = useNavigate();
+   
   const handleCellClick = (params: { field: string; row: any }) => {
     if (params.field === "name") {
       navigate(`/eachbook/${params.row.id}`);

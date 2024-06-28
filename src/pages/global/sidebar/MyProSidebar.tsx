@@ -179,7 +179,7 @@ const MyProSidebar: React.FC = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Books"
+              title="Titles"
               to="/books"
               icon={<LibraryBooksIcon />}
               selected={selected}

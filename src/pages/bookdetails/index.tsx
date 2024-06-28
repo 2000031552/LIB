@@ -17,7 +17,7 @@ const BookDetails: React.FC = () => {
     { field: 'bookcode', headerName: 'Book Code',flex: 0.5 },
     { field: 'borroweddate', headerName: 'Borrowed Date', flex: 0.5 },
     { field: 'duedate', headerName: 'Due Date',flex: 0.5 },
-    { field: 'returndate', headerName: 'Return Date', flex: 0.5},
+     
     { field: 'status', headerName: 'Status', flex: 0.5},
   ];
   const navigate = useNavigate();
