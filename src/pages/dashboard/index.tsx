@@ -42,6 +42,18 @@ const Dashboard: React.FC = () => {
     console.log("Reports clicked");
   };
 
+  const handlefinesClick = () => {
+    navigate("/fines");
+  };
+
+  const handlerequestsClick = () => {
+    navigate("/bookrequests");
+  };
+
+  const handlebookstatusClick = () => {
+    navigate("/bookstatus");
+  };
+
   return (
     <Box m="20px">
       {/* HEADER */}
@@ -127,6 +139,7 @@ const Dashboard: React.FC = () => {
             justifyContent="center"
             borderRadius="8px"
             sx={{ width: "100%", height: "100%" }}
+            onClick={handlerequestsClick}
           >
             <StatBox
               title="3,8767"
@@ -149,6 +162,7 @@ const Dashboard: React.FC = () => {
             justifyContent="center"
             borderRadius="8px"
             sx={{ width: "100%", height: "100%" }}
+            onClick={handlefinesClick}
           >
             <StatBox
               title="1,325,134"
@@ -188,6 +202,7 @@ const Dashboard: React.FC = () => {
             p="30px"
             borderRadius="8px"
             mt={0.6}
+            onClick={handlerequestsClick}
           >
             <Typography
               bgcolor={colors.primary[400]}

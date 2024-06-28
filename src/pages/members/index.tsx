@@ -36,7 +36,7 @@ const Members: React.FC = () => {
       cellClassName: "name-column--cell",
       renderCell: (params) => (
         <Typography
-          sx={{ cursor: 'pointer' }}
+          sx={{ cursor: 'pointer' , alignItems: 'center', justifyContent: 'center'}}
           onClick={() => navigate(`/members/${params.row.id}`)}
         >
           {params.value}

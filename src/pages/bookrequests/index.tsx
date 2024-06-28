@@ -1,63 +1,97 @@
-import React from 'react';
-import { Box, useTheme,  Table, TableHead, TableRow, TableCell, TableBody, Button } from '@mui/material';
-import Header from '../../components/Header';
-import { tokens } from '../../theme';
+import React, { useState } from "react";
+import {
+  Box,
+  useTheme,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Button,
+} from "@mui/material";
+import Header from "../../components/Header";
+import { tokens } from "../../theme";
 
 interface Request {
-  requestId: number;
-  userId: number;
+  noOfRequests: number;
   bookTitle: string;
   author: string;
 }
 
-const sampleData: Request[] = [
-  { requestId: 1, userId: 101, bookTitle: 'The Great Gatsby', author: 'F. Scott Fitzgerald' },
-  { requestId: 2, userId: 102, bookTitle: '1984', author: 'George Orwell' },
-  { requestId: 3, userId: 103, bookTitle: 'To Kill a Mockingbird', author: 'Harper Lee' },
-  { requestId: 4, userId: 104, bookTitle: 'Pride and Prejudice', author: 'Jane Austen' },
-  { requestId: 5, userId: 105, bookTitle: 'The Catcher in the Rye', author: 'J.D. Salinger' },
-  { requestId: 6, userId: 106, bookTitle: 'Moby-Dick', author: 'Herman Melville' },
-  { requestId: 7, userId: 107, bookTitle: 'War and Peace', author: 'Leo Tolstoy' },
-  { requestId: 8, userId: 108, bookTitle: 'The Odyssey', author: 'Homer' },
-  { requestId: 9, userId: 109, bookTitle: 'Crime and Punishment', author: 'Fyodor Dostoevsky' },
-  { requestId: 10, userId: 110, bookTitle: 'The Brothers Karamazov', author: 'Fyodor Dostoevsky' },
+const initialData: Request[] = [
+  {
+    noOfRequests: 1,
+    bookTitle: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+  },
+  { noOfRequests: 2, bookTitle: "1984", author: "George Orwell" },
+  { noOfRequests: 3, bookTitle: "To Kill a Mockingbird", author: "Harper Lee" },
+  { noOfRequests: 4, bookTitle: "Pride and Prejudice", author: "Jane Austen" },
+  {
+    noOfRequests: 5,
+    bookTitle: "The Catcher in the Rye",
+    author: "J.D. Salinger",
+  },
+  { noOfRequests: 6, bookTitle: "Moby-Dick", author: "Herman Melville" },
+  { noOfRequests: 7, bookTitle: "War and Peace", author: "Leo Tolstoy" },
+  { noOfRequests: 8, bookTitle: "The Odyssey", author: "Homer" },
+  {
+    noOfRequests: 9,
+    bookTitle: "Crime and Punishment",
+    author: "Fyodor Dostoevsky",
+  },
+  {
+    noOfRequests: 10,
+    bookTitle: "The Brothers Karamazov",
+    author: "Fyodor Dostoevsky",
+  },
 ];
 
 const BookRequests: React.FC = () => {
+  const [requests, setRequests] = useState<Request[]>(initialData);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   const handleApprove = (requestId: number) => {
-    // Handle the approve action here
-    console.log(`Request ${requestId} approved`);
+    const confirmApprove = window.confirm(
+      `Are you sure you want to approve request ${requestId}?`
+    );
+    if (confirmApprove) {
+      setRequests((prevRequests) =>
+        prevRequests.filter((_, index) => index !== requestId - 1)
+      );
+      console.log(`Request ${requestId} approved`);
+    }
   };
 
   return (
     <Box m="20px">
-      <Header title="Requests" subtitle="Total " />
+      <Header title="Requests" subtitle="Total" />
       <Box mt="18px" p="20px" bgcolor={colors.primary[400]} borderRadius="8px">
         <Table>
           <TableHead>
             <TableRow style={{ backgroundColor: colors.blueAccent[700] }}>
-              <TableCell style={{ color: colors.grey[100] }}>Request ID</TableCell>
-              <TableCell style={{ color: colors.grey[100] }}>User ID</TableCell>
-              <TableCell style={{ color: colors.grey[100] }}>Book Title</TableCell>
+              <TableCell style={{ color: colors.grey[100] }}>
+                No. of Requests
+              </TableCell>
+              <TableCell style={{ color: colors.grey[100] }}>
+                Book Title
+              </TableCell>
               <TableCell style={{ color: colors.grey[100] }}>Author</TableCell>
               <TableCell style={{ color: colors.grey[100] }}>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {sampleData.map((request) => (
-              <TableRow key={request.requestId} style={{ borderRadius: '8px' }}>
-                <TableCell>{request.requestId}</TableCell>
-                <TableCell>{request.userId}</TableCell>
+            {requests.map((request, index) => (
+              <TableRow key={index} style={{ borderRadius: "8px" }}>
+                <TableCell>{request.noOfRequests}</TableCell>
                 <TableCell>{request.bookTitle}</TableCell>
                 <TableCell>{request.author}</TableCell>
                 <TableCell>
                   <Button
                     variant="contained"
                     color="secondary"
-                    onClick={() => handleApprove(request.requestId)}
+                    onClick={() => handleApprove(request.noOfRequests)}
                   >
                     Approve
                   </Button>
