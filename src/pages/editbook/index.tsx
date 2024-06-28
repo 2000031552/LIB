@@ -36,7 +36,13 @@ const EditBook: React.FC = () => {
 
   const handleSave = () => {
     // Add your save logic here (e.g., send updated book data to server)
-    navigate("/books");
+    const confirmApprove = window.confirm(
+      `Are you sure you want to update the book ${id}?`
+    );
+    if (confirmApprove) {
+      navigate("/books");
+      console.log(`Book ${id} updated`);
+    }
   };
 
   if (!book) {
