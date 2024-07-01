@@ -10,29 +10,18 @@ const MostBorrowedStudents: React.FC = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const columns: GridColDef[] = [
-        { field: "userId", headerName: "User Id", width: 300, },
+        { field: "userId", headerName: "User Id", flex:1 },
         {
           field: "Name",
           headerName: "Name",
-          width: 300,
+          flex:1
         },
-        { field: "bookid", headerName: "Book Id", width: 300, },
         {
-          field: "bookTitle",
-          headerName: "Book Title",
-          width: 300,
+          field: "count",
+          headerName: "Count",
+          flex:1,
         },
-         
-        {
-          field: "genre",
-          headerName: "Genre",
-          width: 300,
-      },
-      {
-        field: "author",
-        headerName: "Author",
-        width: 300,
-    },
+     
         
       ];
 
