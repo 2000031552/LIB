@@ -87,7 +87,7 @@ export const mockDataContacts = [
     description:'The Harry Potter series is a seven-book fantasy saga written by J.K. Rowling. It follows the life and adventures of a young wizard, Harry Potter, who discovers on his eleventh birthday that he is the orphaned son of two powerful wizards and possesses unique magical powers. He is invited to attend Hogwarts School of Witchcraft and Wizardry, where he befriends Hermione Granger and Ron Weasley. Together, they uncover the truth about Harrys past and the dark forces threatening the wizarding world.',
     borrowedcount:20,
     overduecount:5,
-    total:150,
+    total:100,
     available:100
   },
   {

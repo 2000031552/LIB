@@ -10,15 +10,15 @@ const BooksLost: React.FC = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const columns: GridColDef[] = [
-        { field: "bookid", headerName: "Book Id", width: 100 },
-        { field: "borrowerid", headerName: "Borrower Id", width: 150 },
-        {
-          field: "name",
-          headerName: "Name",
-          width: 200,
-          cellClassName: "name-column--cell",
-        },
-        { field: "email", headerName: "Email", width: 300 },
+        { field: "bookid", headerName: "Book Id", width: 300 },
+        //{ field: "borrowerid", headerName: "Borrower Id", width: 150 },
+        // {
+        //   field: "name",
+        //   headerName: "Name",
+        //   width: 200,
+        //   cellClassName: "name-column--cell",
+        // },
+        //{ field: "email", headerName: "Email", width: 300 },
         {
           field: "bookTitle",
           headerName: "Book Title",
@@ -30,10 +30,15 @@ const BooksLost: React.FC = () => {
             width: 300,
         },
         {
-            field: "Timeperiod",
-            headerName: "Timeperiod",
+            field: "genre",
+            headerName: "Genre",
             width: 300,
         },
+        {
+          field: "author",
+          headerName: "Author",
+          width: 300,
+      },
       ];
 
       return (

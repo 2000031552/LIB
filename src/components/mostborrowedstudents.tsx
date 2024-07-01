@@ -6,17 +6,23 @@ import { mockDataTeam } from "../data/mockData";
 import Box from "@mui/material/Box";
 
 
-const NeverBorrowedBooks: React.FC = () => {
+const MostBorrowedStudents: React.FC = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const columns: GridColDef[] = [
-      { field: "bookid", headerName: "Book Id", width: 300, },
+        { field: "userId", headerName: "User Id", width: 300, },
+        {
+          field: "Name",
+          headerName: "Name",
+          width: 300,
+        },
+        { field: "bookid", headerName: "Book Id", width: 300, },
         {
           field: "bookTitle",
           headerName: "Book Title",
           width: 300,
         },
-        { field: "publisheddate", headerName: "Published Date", width: 300, },
+         
         {
           field: "genre",
           headerName: "Genre",
@@ -27,6 +33,7 @@ const NeverBorrowedBooks: React.FC = () => {
         headerName: "Author",
         width: 300,
     },
+        
       ];
 
       return (
@@ -36,6 +43,7 @@ const NeverBorrowedBooks: React.FC = () => {
         height="75vh"
         bgcolor={colors.primary[400]}
         borderRadius="8px"
+        width={"flex"}
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
@@ -74,14 +82,13 @@ const NeverBorrowedBooks: React.FC = () => {
         <DataGrid
           rows={mockDataTeam}
           columns={columns}
+          slots={{ toolbar: GridToolbar }}
           paginationModel={{ page: 0, pageSize: 9 }}
           checkboxSelection
           disableRowSelectionOnClick
-          slots={{ toolbar: GridToolbar }}
-          
         />
       </Box>
       );
 };
 
-export default NeverBorrowedBooks;
+export default MostBorrowedStudents;

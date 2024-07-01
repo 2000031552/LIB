@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, useTheme } from '@mui/material';
+import { Box, Button, useTheme } from '@mui/material';
 import { DataGrid, GridToolbar, GridColDef } from '@mui/x-data-grid';
 import { tokens } from '../../theme';
 import { useNavigate } from 'react-router-dom';
@@ -29,7 +29,32 @@ const UserBooks: React.FC = () => {
                 console.error('There was an error fetching the books!', error);
             });
     }, []);
-
+    const handleBorrow = (bookId: number) => {
+        // Handle the borrow logic here, e.g., making an API call
+        console.log(`Borrow book with id: ${bookId}`);
+        fetch(`/api/borrow/${bookId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(updatedBook => {
+                setBooks(prevBooks =>
+                    prevBooks.map(book =>
+                        book.id === bookId ? { ...book, available: updatedBook.available } : book
+                    )
+                );
+            })
+            .catch(error => {
+                console.error('There was a problem with the borrow request:', error);
+            });
+    };
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'Id', width: 100 },
         { field: 'ISBN', headerName: 'ISBN', width: 150 },
@@ -42,7 +67,22 @@ const UserBooks: React.FC = () => {
         { field: 'author', headerName: 'Author', width: 200 },
         { field: 'genre', headerName: 'Genre', width: 150 },
         { field: 'publisheddate', headerName: 'Published Date', width: 150 },
-        { field: 'available', headerName: 'Available copies', width: 150 }
+        { field: 'available', headerName: 'Available copies', width: 150 },
+        {
+            field: 'borrow',
+            headerName: 'Actions',
+            width: 150,
+            renderCell: (params) => (
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => handleBorrow(params.row.id)}
+                    //disabled={params.row.available === 0}
+                >
+                    Borrow
+                </Button>
+            ),
+        },
     ];
 
     const navigate = useNavigate();

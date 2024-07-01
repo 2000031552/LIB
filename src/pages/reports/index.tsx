@@ -9,6 +9,7 @@ import Header from "../../components/Header";
 import BooksLost from '../../components/bookslost';
 import MostBorrowedBook from '../../components/mostborrowedbook';
 import NeverBorrowedBooks from '../../components/neverborrowedbooks';
+import MostBorrowedStudents from '../../components/mostborrowedstudents';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -83,6 +84,17 @@ const Reports: React.FC = () => {
               }
             }} 
           />
+        
+        <Tab 
+            label="Most Borrowed Students" 
+            {...a11yProps(3)} 
+            sx={{ 
+              color: value === 3 ? colors.blueAccent[500] : 'inherit',
+              '&.Mui-selected': {
+                color: colors.blueAccent[500],
+              }
+            }} 
+          />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
@@ -94,6 +106,9 @@ const Reports: React.FC = () => {
       <CustomTabPanel value={value} index={2}>
         <NeverBorrowedBooks />
       </CustomTabPanel>
+      <CustomTabPanel value={value} index={3}>
+      <MostBorrowedStudents />
+    </CustomTabPanel>
     </Box>
   );
 };
