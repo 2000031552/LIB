@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 interface Book {
   id: number;
-  ISBN: string;
+  //ISBN: string;
   name: string;
   author: string;
   genre: string;
@@ -36,7 +36,7 @@ const Bookstatus: React.FC = () => {
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "Id", },
-    { field: "ISBN", headerName: "ISBN", flex: 1, },
+    //{ field: "ISBN", headerName: "ISBN", flex: 1, },
     { field: "name", headerName: "BookTitle", cellClassName: "name-column--cell", flex: 2, },
     { field: "author", headerName: "Author", flex: 1, },
     { field: "genre", headerName: "Genre", flex: 1, },

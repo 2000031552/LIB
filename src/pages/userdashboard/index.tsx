@@ -1,14 +1,11 @@
 import React from 'react';
 import {
   Box as MuiBox,
-  Button,
-  Typography,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { tokens } from "../../theme";
-import { mockTransactions } from "../../data/mockData";
  
 import BookIcon from '@mui/icons-material/Book';
 import RequestQuoteOutlinedIcon from '@mui/icons-material/RequestQuoteOutlined';
@@ -16,7 +13,6 @@ import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
  
 import Header from "../../components/Header";
 import RecentlyAddedBooks from "../../components/RecentlyAddedBooks";
-import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import { useNavigate } from "react-router-dom";
 

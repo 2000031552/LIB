@@ -18,7 +18,7 @@ const UserEachBook: React.FC = () => {
 
   return ( 
     <Box m="25px">
-      <Header title="Book Details"  />
+      <Header title="Book Details" subtitle={''}  />
       <Paper elevation={5 } sx={{
           padding: '16px',
           backgroundColor: colors.greenAccent[500], // Change this to any color you prefer

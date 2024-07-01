@@ -4,44 +4,44 @@ import { Box, Typography, useTheme } from '@mui/material';
 import { DataGrid, GridColDef, GridToolbar } from '@mui/x-data-grid';
 import { tokens } from '../../theme';
 
-interface BorrowalDetail {
-  id: number;
-  ISBN: string;
-  bookCode: string;
+interface HistoryDetail {
+  userid: number;
+  username: string; 
   bookName: string;
   borrowedDate: string;
-  dueDate: string;
-  status: string;
+  returnedDate: string;
+   
 }
 
-const BorrowalDetails: React.FC = () => {
-  const { memberId } = useParams<{ memberId: string }>();
-  const [borrowalDetails, setBorrowalDetails] = useState<BorrowalDetail[]>([]);
+const EachCopyHistory: React.FC = () => {
+  const { bookcode } = useParams<{ bookcode: string }>();
+  const [historyDetails, setHistoryDetails] = useState<HistoryDetail[]>([]);
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   useEffect(() => {
-    fetch(`/api/members/${memberId}/borrowals`) // Replace with your API endpoint
+    fetch(`/api/borrowals/history`) // Replace with your API endpoint
       .then(response => response.json())
-      .then(data => setBorrowalDetails(data))
+      .then(data => setHistoryDetails(data))
       .catch(error => {
-        console.error('There was an error fetching the borrowal details!', error);
+        console.error('There was an error fetching the history details!', error);
       });
-  }, [memberId]);
+  }, [bookcode]);
 
   const columns: GridColDef[] = [
-    { field: 'ISBN', headerName: 'ISBN', flex: 1 },
-    { field: 'bookCode', headerName: 'Book Code', flex: 1 },
+    //{ field: 'ISBN', headerName: 'ISBN', flex: 1 },
+    { field: 'userid', headerName: 'UserId', flex: 1 },
+    { field: 'name', headerName: 'Name', flex: 1 },
     { field: 'bookName', headerName: 'Book Name', flex: 2 },
     { field: 'borrowedDate', headerName: 'Borrowed Date', flex: 1 },
-    { field: 'dueDate', headerName: 'Due Date', flex: 1 },
-    { field: 'status', headerName: 'Status', flex: 1 },
+    { field: 'returnedDate', headerName: 'Returned Date', flex: 1 },
+    //{ field: 'status', headerName: 'Status', flex: 1 },
   ];
 
   return (
     <Box m="20px">
       <Typography variant="h4" mb="20px">
-        Borrowal Details
+        History Details
       </Typography>
       <Box
         mt="18px"
@@ -79,7 +79,7 @@ const BorrowalDetails: React.FC = () => {
         }}
       >
         <DataGrid
-          rows={borrowalDetails.map((detail, index) => ({ id: index, ...detail }))}
+          rows={historyDetails.map((detail, index) => ({ userid: index, ...detail }))}
           columns={columns}
           paginationModel={{ page: 0, pageSize: 9 }}
            
@@ -90,4 +90,4 @@ const BorrowalDetails: React.FC = () => {
   );
 };
 
-export default BorrowalDetails;
+export default EachCopyHistory;
