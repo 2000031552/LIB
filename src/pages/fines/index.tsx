@@ -67,7 +67,7 @@ const Fines: React.FC = () => {
   ];
 
   return (
-    <Box m="20px">
+    <Box m="20px" overflow="auto" >
       <Header title="Fine Due" subtitle="Total Fine Data" />
       <Box
         mt="18px"
@@ -75,6 +75,8 @@ const Fines: React.FC = () => {
         height="75vh"
         bgcolor={colors.primary[400]}
         borderRadius="8px"
+        display="flex"
+        overflow="auto"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
