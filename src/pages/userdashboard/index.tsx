@@ -125,49 +125,7 @@ const UserDashboard: React.FC = () => {
  
             </Box>
           </Box>
-        </Grid>
-
-        {/* Requests */}
-        <Grid item xs={12} sm={12} md={6} lg={4.5}>
-        <Box bgcolor={colors.primary[400]} p="30px" borderRadius="8px" mt={0.6}>
-        <Typography bgcolor={colors.primary[400]} variant="h5" fontWeight="600" sx={{   color: colors.greenAccent[500] }}>
-              Requests
-            </Typography>
-           
-             
-            <Box height="670px" mt="-20px">
-              {/* Rendering mock transactions */}
-              {mockTransactions.map((transaction, i) => (
-                <Box
-                  key={`${transaction}-${i}`}
-                  display="flex"
-                  bgcolor={colors.primary[400]}
-                  justifyContent="space-between"
-                  alignItems="center"
-                  borderBottom={`4px solid ${colors.primary[500]}`}
-                  p="15px"
-                >
-                  <Box>
-                    <Typography variant="h6" fontWeight="600" color={colors.greenAccent[100]}>
-                      {transaction.requestId}
-                    </Typography>
-                    </Box>
-                    <Box>
-                    <Typography color={colors.grey[100]} alignContent="center">
-                      {transaction.bookTitle}
-                    </Typography>
-                  </Box>
-                  <Box color={colors.greenAccent[500]} p="5px 10px" borderRadius="4px" alignContent="left">
-                    {transaction.author}
-                  </Box>
-                  <Box p="5px 10px" borderRadius="4px">
-                    {transaction.userId}
-                  </Box>
-                </Box>
-              ))}
-            </Box>
-          </Box>
-        </Grid>
+        </Grid>        
       </Grid>
     </Box>
   );
