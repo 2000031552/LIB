@@ -10,27 +10,27 @@ const MostBorrowedBook: React.FC = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const columns: GridColDef[] = [
-        { field: "bookid", headerName: "Book Id", width: 300, },
+        { field: "bookid", headerName: "Book Id", flex:1 },
         {
           field: "bookTitle",
           headerName: "Book Title",
-          width: 300,
+          flex:1
         },
         {
           field: "noofborrowals",
           headerName: "Borrowals Count",
-          width: 300,
+          flex:1,
           cellClassName: "name-column--cell",
         },
         {
           field: "genre",
           headerName: "Genre",
-          width: 300,
+          flex:1
       },
       {
         field: "author",
         headerName: "Author",
-        width: 300,
+        flex:1
     },
         
       ];

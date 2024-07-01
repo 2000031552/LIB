@@ -10,22 +10,22 @@ const NeverBorrowedBooks: React.FC = () => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const columns: GridColDef[] = [
-      { field: "bookid", headerName: "Book Id", width: 300, },
+      { field: "bookid", headerName: "Book Id", flex:1 },
         {
           field: "bookTitle",
           headerName: "Book Title",
-          width: 300,
+          flex:1
         },
-        { field: "publisheddate", headerName: "Published Date", width: 300, },
+        { field: "publisheddate", headerName: "Published Date", flex:1, },
         {
           field: "genre",
           headerName: "Genre",
-          width: 300,
+          flex:1,
       },
       {
         field: "author",
         headerName: "Author",
-        width: 300,
+        flex:1,
     },
       ];
 
