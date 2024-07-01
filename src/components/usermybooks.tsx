@@ -131,9 +131,9 @@ const UserMyBooks: React.FC = () => {
 
 
   return (
-    <Box m="1px">
+    <Box m="1px" overflow="auto">
       
-      <Box mt="18px" p="20px" bgcolor={colors.primary[400]} borderRadius="8px">
+      <Box mt="18px" p="20px" bgcolor={colors.primary[400]} borderRadius="8px"  overflow="auto">
         <Table>
           <TableHead>
             <TableRow style={{ backgroundColor: colors.blueAccent[700] }}>
