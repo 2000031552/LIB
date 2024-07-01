@@ -24,8 +24,16 @@ const Books: React.FC = () => {
   const [books, setBooks] = useState<Book[]>(mockDataContacts);
 
   const handleDelete = (id: number) => {
-    setBooks(books.filter(book => book.id !== id));
+    const confirmApprove = window.confirm(
+      `Are you sure you want to delete the book ${id}?`
+    );
+    if (confirmApprove) {
+      setBooks(books.filter(book => book.id !== id));
+      console.log(`Book ${id} deleted`);
+    }
+
   };
+  
   const navigate = useNavigate();
 
   const handleEdit = (id: number) => {
