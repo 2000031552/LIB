@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Box as MuiBox,
   Button,
@@ -9,11 +9,11 @@ import {
 import Grid from "@mui/material/Grid";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
- 
-import BookIcon from '@mui/icons-material/Book';
-import RequestQuoteOutlinedIcon from '@mui/icons-material/RequestQuoteOutlined';
-import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
- 
+
+import BookIcon from "@mui/icons-material/Book";
+import RequestQuoteOutlinedIcon from "@mui/icons-material/RequestQuoteOutlined";
+import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
+
 import Header from "../../components/Header";
 import RecentlyAddedBooks from "../../components/RecentlyAddedBooks";
 import BarChart from "../../components/BarChart";
@@ -29,12 +29,11 @@ const UserDashboard: React.FC = () => {
   const colors = tokens(theme.palette.mode);
   const navigate = useNavigate();
 
-  
   const handleBooksClick = () => {
-    navigate('/userbooks');
+    navigate("/userbooks");
   };
   const handleBorrowsClick = () => {
-    navigate('/userbookhistory');
+    navigate("/userbookhistory");
   };
   return (
     <Box m="20px">
@@ -47,14 +46,11 @@ const UserDashboard: React.FC = () => {
         m="10px 0"
       >
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
-
-        
       </Box>
 
       {/* GRID & CHARTS */}
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-         
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+        <Grid item xs={12} sm={6} md={4}>
           <Box
             bgcolor={colors.primary[400]}
             display="flex"
@@ -62,18 +58,22 @@ const UserDashboard: React.FC = () => {
             justifyContent="center"
             borderRadius="8px"
             onClick={handleBooksClick}
-            sx={{ cursor: 'pointer', width: '100%', height: '100%' }}
+            sx={{ cursor: "pointer", width: "100%", height: "100%" }}
           >
             <StatBox
               title="431,225"
               subtitle="Available books"
-              icon={<BookIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
+              icon={
+                <BookIcon
+                  sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                />
+              }
               progress={0.25}
-              increase={'25%'}
+              increase={"25%"}
             />
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+        <Grid item xs={12} sm={6} md={4}>
           <Box
             bgcolor={colors.primary[400]}
             display="flex"
@@ -81,32 +81,41 @@ const UserDashboard: React.FC = () => {
             justifyContent="center"
             borderRadius="8px"
             onClick={handleBorrowsClick}
-            sx={{ width: '100%', height: '100%' }}
+            sx={{ width: "100%", height: "100%" }}
           >
             <StatBox
               title="3,8767"
               subtitle="Books Borrowed"
-              icon={<LocalLibraryIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
-              progress={0.40}
-              increase={'40%'}
+              icon={
+                <LocalLibraryIcon
+                  sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                />
+              }
+              progress={0.4}
+              increase={"40%"}
             />
           </Box>
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={3} xl={3}>
+        <Grid item xs={12} sm={6} md={4}>
           <Box
             bgcolor={colors.primary[400]}
             display="flex"
             alignItems="center"
             justifyContent="center"
             borderRadius="8px"
-            sx={{ width: '100%', height: '100%' }}
+            sx={{ width: "100%", height: "100%" }}
+            onClick={handleBorrowsClick}
           >
             <StatBox
               title="1,134"
               subtitle="Amount to be paid"
-              icon={<RequestQuoteOutlinedIcon sx={{ color: colors.greenAccent[600], fontSize: "26px" }} />}
-              progress={0.60}
-              increase={'60%'}
+              icon={
+                <RequestQuoteOutlinedIcon
+                  sx={{ color: colors.greenAccent[600], fontSize: "26px" }}
+                />
+              }
+              progress={0.6}
+              increase={"60%"}
             />
           </Box>
         </Grid>
@@ -114,18 +123,19 @@ const UserDashboard: React.FC = () => {
         {/* Recently Added Books */}
         <Grid item xs={12} sm={12} md={6} lg={7.5}>
           <Box bgcolor={colors.primary[400]} borderRadius="8px" mb={3}>
-            <Box mt="25px" p="0 30px" display="flex" justifyContent="space-between" alignItems="center">
-              
-            </Box>
- 
-             
- 
+            <Box
+              mt="25px"
+              p="0 30px"
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+            ></Box>
+
             <Box height="490px" m="-20px 0 0 0">
-              <RecentlyAddedBooks isDashboard={true} /> 
- 
+              <RecentlyAddedBooks isDashboard={true} />
             </Box>
           </Box>
-        </Grid>        
+        </Grid>
       </Grid>
     </Box>
   );

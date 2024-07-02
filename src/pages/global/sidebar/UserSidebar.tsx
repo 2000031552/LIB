@@ -6,17 +6,16 @@ import { Link } from "react-router-dom";
 import { tokens } from "../../../theme";
 import { useTheme, Box, Typography, IconButton } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import SwitchRightOutlinedIcon from "@mui/icons-material/SwitchRightOutlined";
 import SwitchLeftOutlinedIcon from "@mui/icons-material/SwitchLeftOutlined";
+import PostAddOutlinedIcon from '@mui/icons-material/PostAddOutlined';
+import AutoAwesomeMotionOutlinedIcon from '@mui/icons-material/AutoAwesomeMotionOutlined';
 
 interface ItemProps {
   title: string;
@@ -109,10 +108,11 @@ const UserSidebar: React.FC = () => {
                 display="flex"
                 justifyContent="space-between"
                 alignItems="center"
+                textAlign="center"
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.greenAccent[500]}>
-                  User
+                   User
                 </Typography>
                 <IconButton
                   onClick={broken ? () => toggleSidebar() : () => collapseSidebar()}
@@ -180,7 +180,7 @@ const UserSidebar: React.FC = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Borrowal History"
+              title="Borrowed Books"
               to="/userbookhistory"
               icon={<MenuBookIcon />}
               selected={selected}
@@ -189,7 +189,7 @@ const UserSidebar: React.FC = () => {
             <Item
               title="New Book Request"
               to="/userrequestform"
-              icon={<AttachMoneyIcon />}
+              icon={<PostAddOutlinedIcon/>}
               selected={selected}
               setSelected={setSelected}
             />
@@ -201,13 +201,13 @@ const UserSidebar: React.FC = () => {
             >
               Pages
             </Typography>
-            <Item
+            {/* <Item
               title="Profile Form"
               to="/form"
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            />
+            /> */}
             <Item
               title="Calendar"
               to="/calendar"
@@ -218,7 +218,7 @@ const UserSidebar: React.FC = () => {
             <Item
               title="All Requests"
               to="/userallrequests"
-              icon={<HelpOutlineOutlinedIcon />}
+              icon={<AutoAwesomeMotionOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
