@@ -133,7 +133,7 @@ const UserMyBooks: React.FC = () => {
               <TableCell style={{ color: colors.grey[100] }}>Borrowed Date</TableCell>
               <TableCell style={{ color: colors.grey[100] }}>Return Date</TableCell>
               <TableCell style={{ color: colors.grey[100] }}>Fine</TableCell>
-              <TableCell style={{ color: colors.grey[100] }}>Actions</TableCell>
+              <TableCell style={{ color: colors.grey[100] }}>Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
