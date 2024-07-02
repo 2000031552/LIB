@@ -139,7 +139,7 @@ const Dashboard: React.FC = () => {
             justifyContent="center"
             borderRadius="8px"
             sx={{ width: "100%", height: "100%" }}
-            onClick={handlerequestsClick}
+            onClick={handlebookstatusClick}
           >
             <StatBox
               title="3,8767"
