@@ -8,7 +8,7 @@ import { mockDataContacts } from '../../data/mockData';
 
 interface Book {
     id: number;
-    ISBN: string;
+    //ISBN: string;
     name: string;
     author: string;
     genre: string;
@@ -56,21 +56,22 @@ const UserBooks: React.FC = () => {
             });
     };
     const columns: GridColDef[] = [
-        { field: 'id', headerName: 'Id',  },
-        { field: 'ISBN', headerName: 'ISBN', flex: 1},
+        { field: 'id', headerName: 'Id', width: 100 },
+        { field: 'ISBN', headerName: 'ISBN', width: 150 },
         {
             field: 'name',
             headerName: 'Book Title',
             cellClassName: 'name-column--cell',
             flex: 1 ,
         },
-        { field: 'author', headerName: 'Author', flex: 1 },
-        { field: 'publisheddate', headerName: 'Published Date',  flex: 1},
-        { field: 'available', headerName: 'Total copies', flex: 1 },
+        { field: 'author', headerName: 'Author', width: 200 },
+        { field: 'genre', headerName: 'Genre', width: 150 },
+        { field: 'publisheddate', headerName: 'Published Date', width: 150 },
+        { field: 'available', headerName: 'Available copies', width: 150 },
         {
             field: 'borrow',
             headerName: 'Actions',
-            width: 150,
+            width: 200,
             renderCell: (params) => (
                 <Button
                     variant="contained"

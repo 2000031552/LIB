@@ -10,7 +10,7 @@ import Header from "../../components/Header";
 
 interface Book {
   id: number;
-  ISBN: string;
+  //ISBN: string;
   name: string;
   author: string;
   genre: string;  
@@ -41,7 +41,7 @@ const Books: React.FC = () => {
   };
   const columns: GridColDef[] = [
     { field: "id", headerName: "Id",  },
-    { field: "ISBN", headerName: "ISBN", flex: 1, },
+    //{ field: "ISBN", headerName: "ISBN", flex: 1, },
     {
       field: "name",
       headerName: "BookTitle",

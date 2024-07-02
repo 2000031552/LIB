@@ -13,7 +13,7 @@ const BookDetails: React.FC = () => {
   const columns: GridColDef[] = [
     { field: 'userid', headerName: 'User ID', flex: 0.3 },
     { field: 'username', headerName: 'Username', flex: 0.5 },
-    { field: 'ISBN', headerName: 'ISBN', flex: 0.5},
+    //{ field: 'ISBN', headerName: 'ISBN', flex: 0.5},
     { field: 'bookcode', headerName: 'Book Code',flex: 0.5 },
     { field: 'borroweddate', headerName: 'Borrowed Date', flex: 0.5 },
     { field: 'duedate', headerName: 'Due Date',flex: 0.5 },
