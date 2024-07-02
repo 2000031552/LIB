@@ -12,7 +12,7 @@ interface Book {
     name: string;
     author: string;
     genre: string;
-    publisheddate: string;
+    publisheddate: string; 
     available: number;
 }
 
@@ -56,18 +56,18 @@ const UserBooks: React.FC = () => {
             });
     };
     const columns: GridColDef[] = [
-        { field: 'id', headerName: 'Id', width: 150 },
-        //{ field: 'ISBN', headerName: 'ISBN', width: 150 },
+        { field: 'id', headerName: 'Id', width: 100 },
+        { field: 'ISBN', headerName: 'ISBN', width: 150 },
         {
             field: 'name',
             headerName: 'Book Title',
             cellClassName: 'name-column--cell',
-            width: 200,
+            flex: 1 ,
         },
         { field: 'author', headerName: 'Author', width: 200 },
-        { field: 'genre', headerName: 'Genre', width: 200 },
-        { field: 'publisheddate', headerName: 'Published Date', width: 200 },
-        { field: 'available', headerName: 'Available copies', width: 200 },
+        { field: 'genre', headerName: 'Genre', width: 150 },
+        { field: 'publisheddate', headerName: 'Published Date', width: 150 },
+        { field: 'available', headerName: 'Available copies', width: 150 },
         {
             field: 'borrow',
             headerName: 'Actions',
@@ -93,41 +93,47 @@ const UserBooks: React.FC = () => {
     };
 
     return (
-        <Box m="16px">
+        <Box m="8px">
             <Header title="Books" subtitle="Total Books Data" />
             <Box
-                m="8px 0 0 0"
+                
+                p="16px"
                 width="100%"
                 height="80vh"
                 sx={{
                     "& .MuiDataGrid-root": {
-                        border: "none",
+                      border: "none",
                     },
                     "& .MuiDataGrid-cell": {
-                        borderBottom: "none",
+                      borderBottom: "none",
                     },
                     "& .name-column--cell": {
-                        color: colors.greenAccent[300],
+                      color: colors.greenAccent[300],
                     },
                     "& .MuiDataGrid-columnHeaders": {
-                        backgroundColor: `${colors.blueAccent[700]} !important`,
-                        borderBottom: "none",
-                        color: colors.grey[100],
+                      backgroundColor: `${colors.blueAccent[700]} !important`,
+                      borderBottom: "none",
+                    },
+                    "& .MuiDataGrid-columnHeader": {
+                      backgroundColor: `${colors.blueAccent[700]} !important`,
+                    },
+                    "& .MuiDataGrid-columnHeaderTitle": {
+                      color: `${colors.grey[100]} !important`,
                     },
                     "& .MuiDataGrid-virtualScroller": {
-                        backgroundColor: colors.primary[400],
+                      backgroundColor: colors.primary[400],
                     },
                     "& .MuiDataGrid-footerContainer": {
-                        borderTop: "none",
-                        backgroundColor: colors.blueAccent[700],
+                      borderTop: "none",
+                      backgroundColor: `${colors.blueAccent[700]} !important`,
                     },
                     "& .MuiCheckbox-root": {
-                        color: `${colors.greenAccent[200]} !important`,
+                      color: `${colors.greenAccent[200]} !important`,
                     },
                     "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-                        color: `${colors.grey[100]} !important`,
+                      color: `${colors.greenAccent[200]} !important`,
                     },
-                }}
+                  }}
             >
                 <DataGrid
                     rows={mockDataContacts}
