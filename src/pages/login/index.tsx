@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Button,
   Container,
   TextField,
   Typography,
-  Link,
-  Grid,
   Paper,
-  Divider,
 } from '@mui/material';
-import { grey } from '@mui/material/colors';
+//import { grey } from '@mui/material/colors';
 
 const validationSchema = Yup.object({
   phoneNumber: Yup.string()
@@ -26,6 +24,7 @@ interface LoginProps {
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [initialPhoneNumber, setInitialPhoneNumber] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Simulate an API call to fetch initial phone number
@@ -53,17 +52,9 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
     enableReinitialize: true,
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      // Simulate a login API call
+      // Simulate sending OTP
       setTimeout(() => {
-        // On successful login, call onLogin and let the parent handle routing
-        if (values.phoneNumber === '1234567890') {
-          onLogin('admin');
-        } else if (values.phoneNumber === '0987654321') {
-          onLogin('user');
-        } else {
-          // Handle invalid credentials
-          alert('Invalid credentials');
-        }
+         navigate('/otp-verification');
       }, 1000);
     },
   });
@@ -152,23 +143,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 }}
               />
             </Box>
-            {/* <Grid
-              container
-              justifyContent="flex-end"
-              sx={{ mb: 0, color: grey }}
-            >
-              <Link
-                variant="body2"
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  fontSize: '0.8rem',
-                }}
-                className="Link-underline"
-              >
-                Forgot password?
-              </Link>
-            </Grid> */}
             <Button
               type="submit"
               fullWidth
@@ -178,7 +152,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             >
               Get OTP
             </Button>
-             
           </Box>
         </Paper>
       </Container>

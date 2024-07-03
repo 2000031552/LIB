@@ -9,6 +9,7 @@ import Login from './pages/login'; // Import your Login component here
 import Topbar from './pages/global/Topbar';
 import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import OtpVerification from './pages/otpverification.tsx';
 
 const getUserRole = () => {
   return localStorage.getItem('role');
@@ -90,6 +91,8 @@ const App: React.FC = () => {
         />
       )}
       <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/otp-verification" element={<OtpVerification/>} />
+       
     </Routes>
   );
 };

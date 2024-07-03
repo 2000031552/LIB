@@ -18,10 +18,15 @@ import Login from './pages/login';
 import BorrowalDetails from "./pages/eachmemborrowaldetails";
 import EditBook from "./pages/editbook";
 import EachCopyHistory from "./pages/eachcopyhistory";
-//import Signup from './pages/signup';
  
+//import Signup from './pages/signup';
+const handleLogin = (userRole: string) => {
+  console.log(`Logged in as ${userRole}`);
+};
+
 const adminRoutes: RouteObject[] = [
-  { path: "/login", element: <Login onLogin={() => {}} /> },
+   
+  { path: "/login", element: <Login onLogin={() => { handleLogin('admin'); }} /> },
   { path: "/dashboard", element: <Dashboard /> },
   { path: "/profile", element: <Profile /> },
   { path: "/change-password", element: <ChangePassword /> },
