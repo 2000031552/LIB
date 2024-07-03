@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -10,19 +10,14 @@ import {
   Link,
   Grid,
   Paper,
-  IconButton,
   Divider,
 } from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { grey } from '@mui/material/colors';
-//import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
-  userId: Yup.string()
-    .email('Enter a valid email')
-    .required('Email is required'),
-  password: Yup.string().required('Password is required'),
+  phoneNumber: Yup.string()
+    .matches(/^\d{10}$/, 'Enter a valid phone number')
+    .required('Phone number is required'),
 });
 
 interface LoginProps {
@@ -30,22 +25,40 @@ interface LoginProps {
 }
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
-  const [showPassword, setShowPassword] = useState(false);
-  //const navigate = useNavigate();
+  const [initialPhoneNumber, setInitialPhoneNumber] = useState('');
+
+  useEffect(() => {
+    // Simulate an API call to fetch initial phone number
+    const fetchInitialPhoneNumber = async () => {
+      try {
+        const response = await fetch('https://api.example.com/user/initial-phone');
+        const data = await response.json();
+        if (response.ok) {
+          setInitialPhoneNumber(data.phoneNumber);
+        } else {
+          console.error('Failed to fetch initial phone number');
+        }
+      } catch (error) {
+        console.error('Error fetching initial phone number:', error);
+      }
+    };
+
+    fetchInitialPhoneNumber();
+  }, []);
 
   const formik = useFormik({
     initialValues: {
-      userId: 'admin@gmail.com',
-      password: 'admin@123',
+      phoneNumber: initialPhoneNumber,
     },
+    enableReinitialize: true,
     validationSchema: validationSchema,
     onSubmit: (values) => {
       // Simulate a login API call
       setTimeout(() => {
         // On successful login, call onLogin and let the parent handle routing
-        if (values.userId === 'admin@gmail.com' && values.password === 'admin@123') {
+        if (values.phoneNumber === '1234567890') {
           onLogin('admin');
-        } else if (values.userId === 'user@gmail.com' && values.password === 'user@123') {
+        } else if (values.phoneNumber === '0987654321') {
           onLogin('user');
         } else {
           // Handle invalid credentials
@@ -53,39 +66,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         }
       }, 1000);
     },
-    // onSubmit: async (values) => {
-    //   try {
-    //     const response = await fetch('https://your-api-endpoint/login', {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify(values),
-    //     });
-
-    //     const data = await response.json();
-
-    //     if (response.ok) {
-    //       if (data.role === 'admin') {
-    //         navigate('/dashboard');
-    //       } else if (data.role === 'user') {
-    //         navigate('/user-dashboard');
-    //       }
-    //     } else {
-    //       alert(data.message || 'Invalid credentials');
-    //       navigate('/login');
-    //     }
-    //   } catch (error) {
-    //     console.error('Error:', error);
-    //     alert('Something went wrong. Please try again later.');
-    //     navigate('/login');
-    //   }
-    // },
   });
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
 
   return (
     <Box
@@ -101,7 +82,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       <Container maxWidth="sm">
         <Paper
           elevation={3}
-          sx={{ padding: 6, width: '100%', borderRadius: 4, backgroundColor: '#dbf5ee' }}// #f0f8ff
+          sx={{ padding: 6, width: '100%', borderRadius: 4, backgroundColor: '#dbf5ee' }}
         >
           <Box
             sx={{
@@ -122,7 +103,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             >
               Welcome Back!
             </Typography>
-          </Box>
+          </Box><br/>
           <Box component="form" onSubmit={formik.handleSubmit} sx={{ mt: 2 }}>
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography
@@ -131,25 +112,24 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                 gutterBottom
                 sx={{ fontSize: '0.9rem', textAlign: 'left', color: 'grey' }}
               >
-                Email ID*
+                <b>Enter Your phone number</b>
               </Typography>
-
               <TextField
                 fullWidth
-                id="userId"
-                name="userId"
+                id="phoneNumber"
+                name="phoneNumber"
                 size="small"
-                placeholder="Enter email"
-                value={formik.values.userId}
+                placeholder="Your phone number"
+                value={formik.values.phoneNumber}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  (formik.touched.userId || formik.submitCount > 0) &&
-                  Boolean(formik.errors.userId)
+                  (formik.touched.phoneNumber || formik.submitCount > 0) &&
+                  Boolean(formik.errors.phoneNumber)
                 }
                 helperText={
-                  (formik.touched.userId || formik.submitCount > 0) &&
-                  formik.errors.userId
+                  (formik.touched.phoneNumber || formik.submitCount > 0) &&
+                  formik.errors.phoneNumber
                 }
                 margin="dense"
                 sx={{
@@ -171,52 +151,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                   },
                 }}
               />
-              <Typography
-                variant="subtitle1"
-                align="left"
-                gutterBottom
-                sx={{
-                  fontSize: '0.9rem',
-                  textAlign: 'left',
-                  mt: 2,
-                  color: 'grey',
-                }}
-              >
-                Password*
-              </Typography>
-              <TextField
-                fullWidth
-                id="password"
-                name="password"
-                size="small"
-                placeholder="Enter password"
-                type={showPassword ? 'text' : 'password'}
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  (formik.touched.password || formik.submitCount > 0) &&
-                  Boolean(formik.errors.password)
-                }
-                helperText={
-                  (formik.touched.password || formik.submitCount > 0) &&
-                  formik.errors.password
-                }
-                margin="dense"
-                InputProps={{
-                  endAdornment: (
-                    <IconButton onClick={togglePasswordVisibility} edge="end">
-                      {showPassword ? (
-                        <VisibilityIcon />
-                      ) : (
-                        <VisibilityOffIcon />
-                      )}
-                    </IconButton>
-                  ),
-                }}
-              />
             </Box>
-            <Grid
+            {/* <Grid
               container
               justifyContent="flex-end"
               sx={{ mb: 0, color: grey }}
@@ -232,7 +168,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               >
                 Forgot password?
               </Link>
-            </Grid>
+            </Grid> */}
             <Button
               type="submit"
               fullWidth
@@ -240,21 +176,9 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               color="primary"
               sx={{ mt: 3, mb: 3, textTransform: 'none' }}
             >
-              Login
+              Get OTP
             </Button>
-            <Divider sx={{ my: 2, backgroundColor: 'skyblue' }} />
-            <Link
-              variant="body2"
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                fontSize: '0.8rem',
-              }}
-              className="Link-underline"
-              //onClick={() => navigate('/signup')}
-            >
-              New User? Register
-            </Link>
+             
           </Box>
         </Paper>
       </Container>
