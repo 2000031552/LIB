@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Button, Container, TextField, Typography, Paper, Grid  } from '@mui/material';
 import {   useNavigate } from 'react-router-dom';
+
  
 const OtpVerification: React.FC = () => {
      
@@ -22,14 +23,37 @@ const OtpVerification: React.FC = () => {
     }
   };
 
-  const handleSubmit = () => {
-    const enteredOtp = otp.join('');
-    // Simulate OTP verification logic
-    if (enteredOtp === '123456') {
-        navigate('/dashboard');
-      alert('OTP verified successfully!');
-    } else {
-      alert('Invalid OTP. Please try again.');
+  const handleSubmit = async() => {
+    try {
+      const token = sessionStorage.getItem('token');
+      const body = {
+        token: token,
+        code : otp.join(''),
+      }
+      const response = await fetch("/v2/api/library/users/verify-otp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      console.log(body);
+      const data = await response.json();
+      console.log(data);
+      if (response.ok) {
+        if(data.user.role == "librarian"){
+          console.log(data.role);
+          navigate("/dashboard");
+        }
+        else{
+          navigate("/userdashboard");
+        }
+      } 
+      else {
+        console.error("Failed to verify otp");
+      }
+    } catch (error) {
+      console.error("Error fetching initial phone number:", error);
     }
   };
 
