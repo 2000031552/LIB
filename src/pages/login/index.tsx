@@ -70,7 +70,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         borderRadius: 4
       }}
     >
-      <Container maxWidth="sm">
+      <Container maxWidth="xs">
         <Paper
           elevation={3}
           sx={{ padding: 6, width: '100%', borderRadius: 4, backgroundColor: '#dbf5ee' }}
