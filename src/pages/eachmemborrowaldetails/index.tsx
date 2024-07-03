@@ -6,7 +6,7 @@ import { tokens } from '../../theme';
 
 interface BorrowalDetail {
   id: number;
-  ISBN: string;
+  //ISBN: string;
   bookCode: string;
   bookName: string;
   borrowedDate: string;
@@ -30,7 +30,7 @@ const BorrowalDetails: React.FC = () => {
   }, [memberId]);
 
   const columns: GridColDef[] = [
-    { field: 'ISBN', headerName: 'ISBN', flex: 1 },
+    //{ field: 'ISBN', headerName: 'ISBN', flex: 1 },
     { field: 'bookCode', headerName: 'Book Code', flex: 1 },
     { field: 'bookName', headerName: 'Book Name', flex: 2 },
     { field: 'borrowedDate', headerName: 'Borrowed Date', flex: 1 },

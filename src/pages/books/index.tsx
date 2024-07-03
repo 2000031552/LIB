@@ -70,7 +70,14 @@ const Books: React.FC = () => {
   ];
 
    
-  const handleCellClick = (params: { field: string; row: any }) => {
+
+
+  type RowType = {
+    id: number;
+    name: string;
+    // add other properties of row here if necessary
+  };
+  const handleCellClick = (params: { field: string; row: RowType }) => {
     if (params.field === "name") {
       navigate(`/eachbook/${params.row.id}`);
     }

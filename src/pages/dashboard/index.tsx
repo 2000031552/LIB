@@ -16,7 +16,7 @@ import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import GroupIcon from "@mui/icons-material/Group";
 import Header from "../../components/Header";
 import RecentlyAddedBooks from "../../components/RecentlyAddedBooks";
-import BarChart from "../../components/BarChart";
+//import BarChart from "../../components/BarChart";
 import StatBox from "../../components/StatBox";
 import { useNavigate } from "react-router-dom";
 

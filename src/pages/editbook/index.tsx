@@ -8,12 +8,12 @@ import Header from "../../components/Header";
 
 interface Book {
   id: number;
-  ISBN: string;
+   
   name: string;
   author: string;
   genre: string;
   publisheddate: string;
-  description: string;
+   
   available: number;
 }
 
@@ -89,15 +89,7 @@ const EditBook: React.FC = () => {
           onChange={handleChange}
           fullWidth
         />
-        <TextField
-          label="Description"
-          name="description"
-          value={book.description}
-          onChange={handleChange}
-          multiline
-          rows={4}
-          fullWidth
-        />
+         
         <Box display="flex" justifyContent="space-between" mt="16px">
           <Button
             variant="contained"
